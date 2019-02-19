@@ -24,17 +24,17 @@ public class DoLogin extends HttpServlet
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String username = "";
+        String loginname = "";
         String password = "";
-        username = req.getParameter("username");
+        loginname = req.getParameter("loginname");
         password = req.getParameter("password");
-        if("".equals(username) || "".equals(password)) {
+        if("".equals(loginname) || "".equals(password) || loginname==null || password==null) {
             req.setAttribute("title", "登陆失败");
             req.setAttribute("info", "用户名和密码信息输入不完整");
             req.getRequestDispatcher("/comm/error.jsp").forward(req, resp);
         } else {
             try {
-                User user = userManage.login(username, password);
+                User user = userManage.login(loginname, password);
                 req.getSession().setAttribute("uid", user.getUid());
                 req.getSession().setAttribute("username", user.getUserName());
                 req.getSession().setAttribute("user_type", user.getUserType());

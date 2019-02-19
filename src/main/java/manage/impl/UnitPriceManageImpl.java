@@ -13,13 +13,14 @@ import java.sql.SQLException;
  */
 public class UnitPriceManageImpl implements UnitPriceManage {
     private UnitPriceDao unitPriceDao = (UnitPriceDao) ObjectFactory.getObject("UnitPriceDao");
+
     /**
      * @param costType
      * @return
      * @throws CostException
      */
     @Override
-    public Double getUnitPrice(int costType) throws CostException {
+    public double getUnitPrice(int costType) throws CostException {
         try {
             return unitPriceDao.getUnitPrice(costType);
         } catch (SQLException e) {

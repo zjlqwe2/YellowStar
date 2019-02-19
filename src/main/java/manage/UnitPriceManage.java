@@ -14,7 +14,7 @@ public interface UnitPriceManage {
      * @return
      * @throws CostException
      */
-    Double getUnitPrice(int costType) throws CostException;
+    double getUnitPrice(int costType) throws CostException;
 
     /**
      *

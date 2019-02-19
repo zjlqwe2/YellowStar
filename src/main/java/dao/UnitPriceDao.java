@@ -13,7 +13,7 @@ public interface UnitPriceDao {
      * @param costType
      * @return
      */
-    Double getUnitPrice(int costType) throws SQLException;
+    double getUnitPrice(int costType) throws SQLException;
 
     /**
      * 保存单价

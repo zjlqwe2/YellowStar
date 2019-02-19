@@ -20,11 +20,11 @@ public class UnitPriceDaoImpl implements UnitPriceDao {
      * @return
      */
     @Override
-    public Double getUnitPrice(int costType) throws SQLException {
+    public double getUnitPrice(int costType) throws SQLException {
         String sql = "SELECT * FROM yw_unitprice WHERE cost_type=? ORDER BY pid DESC LIMIT 1";
         List<Object> objects = DBHelp.executeQuery(sql, new UnitPriceMapperImpl(), costType);
         if (objects == null || objects.size() == 0) {
-            return null;
+            return 0;
         }
         UnitPrice unitPrice = (UnitPrice)(objects.get(0));
         return unitPrice.getUnitPrice();
