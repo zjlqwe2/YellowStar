@@ -1,8 +1,7 @@
 package util;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author: 我的袜子都是洞
@@ -13,36 +12,26 @@ public class ObjectFactory {
     private static Map<String, Object> map = new HashMap<String, Object>();
 
     static {
-        BufferedReader br = null;
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        Properties prop = new Properties();
         try {
-            br = new BufferedReader(new FileReader("src/main/yellowstar.properties"));
-            String str = br.readLine();
-            while (str != null) {
-                // 分割配置文件的每行
-                String[] arr = str.split("=");
-                // 根据获取到类实例出对象
-                Object o2 = Class.forName(arr[1]).newInstance();
-                map.put(arr[0].toLowerCase().trim(), o2);
-                str = br.readLine();
+            prop.load(classloader.getResourceAsStream("yellowstar.properties"));
+            Iterator<Map.Entry<Object, Object>> it = prop.entrySet().iterator();
+            while (it.hasNext()) {
+                Map.Entry<Object, Object> entry = it.next();
+                String key = (String) entry.getKey();
+                String value = (String) entry.getValue();
+                Object object = Class.forName(value).newInstance();
+                map.put(key.toLowerCase().trim(), object);
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
         }
     }
 
