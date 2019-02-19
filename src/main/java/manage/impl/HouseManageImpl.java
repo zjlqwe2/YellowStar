@@ -7,6 +7,8 @@ import manage.HouseManage;
 import util.ObjectFactory;
 import java.sql.SQLException;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author: 我的袜子都是洞
@@ -15,6 +17,7 @@ import java.util.List;
  */
 public class HouseManageImpl implements HouseManage {
     HouseDao houseDao = (HouseDao) ObjectFactory.getObject("HouseDao");
+    private static final Logger logger = LoggerFactory.getLogger(HouseManageImpl.class);
 
     /**
      * 通过hid获得业主
@@ -28,6 +31,7 @@ public class HouseManageImpl implements HouseManage {
         try {
             return houseDao.getHouse(hid);
         } catch (SQLException e) {
+            logger.debug(e.getMessage());
             throw new HouseException(e.getMessage());
         }
     }
@@ -45,6 +49,7 @@ public class HouseManageImpl implements HouseManage {
             boolean flag = houseDao.saveHouse(house);
             return flag;
         } catch (SQLException e) {
+            logger.debug(e.getMessage());
             throw new HouseException(e.getMessage());
         }
     }
@@ -62,6 +67,7 @@ public class HouseManageImpl implements HouseManage {
             boolean flag = houseDao.delHouse(hid);
             return flag;
         } catch (SQLException e) {
+            logger.debug(e.getMessage());
             throw new HouseException(e.getMessage());
         }
     }
@@ -79,6 +85,7 @@ public class HouseManageImpl implements HouseManage {
             boolean flag = houseDao.updateHouse(house);
             return flag;
         } catch (SQLException e) {
+            logger.debug(e.getMessage());
             throw new HouseException(e.getMessage());
         }
     }
@@ -95,6 +102,7 @@ public class HouseManageImpl implements HouseManage {
             List<House> houses = houseDao.listAll();
             return houses;
         } catch (SQLException e) {
+            logger.debug(e.getMessage());
             throw new HouseException(e.getMessage());
         }
     }

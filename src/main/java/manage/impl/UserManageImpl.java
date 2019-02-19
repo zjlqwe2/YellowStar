@@ -7,6 +7,8 @@ import manage.UserManage;
 import util.ObjectFactory;
 import java.sql.SQLException;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author: 我的袜子都是洞
@@ -15,6 +17,7 @@ import java.util.List;
  */
 public class UserManageImpl implements UserManage {
     private UserDao userdao = (UserDao) ObjectFactory.getObject("UserDao");
+    private static final Logger logger = LoggerFactory.getLogger(UserManageImpl.class);
 
     /**
      * 用户登录验证
@@ -36,6 +39,7 @@ public class UserManageImpl implements UserManage {
             }
             return user;
         } catch (SQLException e) {
+            logger.debug(e.getMessage());
             throw new UserException(e.getMessage());
         }
     }
@@ -55,6 +59,7 @@ public class UserManageImpl implements UserManage {
             }
             return list;
         } catch (SQLException e) {
+            logger.debug(e.getMessage());
             throw new UserException(e.getMessage());
         }
     }
@@ -73,6 +78,7 @@ public class UserManageImpl implements UserManage {
             boolean flag = userdao.saveUser(user);
             return flag;
         } catch (SQLException e) {
+            logger.debug(e.getMessage());
             throw new UserException(e.getMessage());
         }
     }

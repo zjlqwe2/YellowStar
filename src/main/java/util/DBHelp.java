@@ -2,13 +2,14 @@ package util;
 
 import org.apache.commons.dbcp.BasicDataSourceFactory;
 import javax.sql.DataSource;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author: 我的袜子都是洞
@@ -17,6 +18,7 @@ import java.util.Properties;
  * @date: 2019-01-26 11:01
  */
 public class DBHelp {
+    private static final Logger logger = LoggerFactory.getLogger(DBHelp.class);
     private static Properties prop = new Properties ();
     private static DataSource ds = null;
     private static ThreadLocal<Connection> threadLocal = new ThreadLocal<Connection>();
@@ -24,14 +26,16 @@ public class DBHelp {
     static {
         try {
             ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-
             prop.load (classloader.getResourceAsStream("connect.properties"));
             ds = BasicDataSourceFactory.createDataSource(prop);
         } catch (FileNotFoundException e) {
+            logger.error(e.getMessage());
             e.printStackTrace();
         } catch (IOException e) {
+            logger.error(e.getMessage());
             e.printStackTrace();
         } catch (Exception e) {
+            logger.error(e.getMessage());
             e.printStackTrace();
         }
     }
@@ -50,6 +54,7 @@ public class DBHelp {
                 threadLocal.set(conn);
             }
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             e.printStackTrace();
         }
         return conn;
@@ -80,6 +85,7 @@ public class DBHelp {
             try {
                 rs.close();
             } catch (SQLException e) {
+                logger.error(e.getMessage());
                 e.printStackTrace();
             }
         }
@@ -87,6 +93,7 @@ public class DBHelp {
             try {
                 stmt.close();
             } catch (SQLException e) {
+                logger.error(e.getMessage());
                 e.printStackTrace();
             }
         }
@@ -94,6 +101,7 @@ public class DBHelp {
             try {
                 conn.close();
             } catch (SQLException e) {
+                logger.error(e.getMessage());
                 e.printStackTrace();
             }
         }
@@ -116,6 +124,7 @@ public class DBHelp {
             setParm(pstmt, objects);
             result = pstmt.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             e.printStackTrace();
         } finally {
             close (null, pstmt, null);
@@ -146,6 +155,7 @@ public class DBHelp {
                 list.add(o);
             }
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             e.printStackTrace();
         } finally {
             close(rs, pstmt, null);

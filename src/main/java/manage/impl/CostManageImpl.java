@@ -7,6 +7,8 @@ import manage.CostManage;
 import util.ObjectFactory;
 import java.sql.SQLException;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author: 我的袜子都是洞
@@ -15,7 +17,7 @@ import java.util.List;
  */
 public class CostManageImpl implements CostManage {
     private CostDao costDao = (CostDao) ObjectFactory.getObject("CostDao");
-
+    private static final Logger logger = LoggerFactory.getLogger(CostManageImpl.class);
     /**
      * 添加价格
      *
@@ -28,6 +30,7 @@ public class CostManageImpl implements CostManage {
         try {
             return costDao.saveCost(cost.getHid(), cost.getCostType(), cost.getAmount());
         } catch (SQLException e) {
+            logger.debug(e.getMessage());
             throw new CostException(e.getMessage());
         }
     }
@@ -45,6 +48,7 @@ public class CostManageImpl implements CostManage {
         try {
             return costDao.listTypeCost(hid, costType);
         } catch (SQLException e) {
+            logger.debug(e.getMessage());
             throw new CostException(e.getMessage());
         }
     }
@@ -61,6 +65,7 @@ public class CostManageImpl implements CostManage {
         try {
             return costDao.listAllCost(costType);
         } catch (SQLException e) {
+            logger.debug(e.getMessage());
             throw new CostException(e.getMessage());
         }
     }

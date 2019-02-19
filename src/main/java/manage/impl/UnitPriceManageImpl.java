@@ -5,6 +5,8 @@ import exception.CostException;
 import manage.UnitPriceManage;
 import util.ObjectFactory;
 import java.sql.SQLException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author: 我的袜子都是洞
@@ -13,6 +15,7 @@ import java.sql.SQLException;
  */
 public class UnitPriceManageImpl implements UnitPriceManage {
     private UnitPriceDao unitPriceDao = (UnitPriceDao) ObjectFactory.getObject("UnitPriceDao");
+    private static final Logger logger = LoggerFactory.getLogger(UnitPriceManageImpl.class);
 
     /**
      * @param costType
@@ -24,6 +27,7 @@ public class UnitPriceManageImpl implements UnitPriceManage {
         try {
             return unitPriceDao.getUnitPrice(costType);
         } catch (SQLException e) {
+            logger.debug(e.getMessage());
             throw new CostException(e.getMessage());
         }
     }
@@ -39,6 +43,7 @@ public class UnitPriceManageImpl implements UnitPriceManage {
         try {
             return unitPriceDao.saveUnitPrice(costType, unitPrice);
         } catch (SQLException e) {
+            logger.debug(e.getMessage());
             throw new CostException(e.getMessage());
         }
     }
