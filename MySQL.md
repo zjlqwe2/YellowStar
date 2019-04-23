@@ -9,7 +9,7 @@
 表名：``user``
 
 ```sql
-CREATE TABLE IF NOT EXISTS yw_user (
+CREATE TABLE IF NOT EXISTS user (
     uid INT UNSIGNED NOT NULL AUTO_INCREMENT KEY COMMENT 'UID',
     loginname VARCHAR(20) NOT NULL UNIQUE comment '登录名',
     username VARCHAR(20) NOT NULL UNIQUE comment '用户名',
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS yw_user (
 表名：``house``
 
 ```sql
-CREATE TABLE IF NOT EXISTS yw_house (
+CREATE TABLE IF NOT EXISTS house (
     hid INT UNSIGNED NOT NULL AUTO_INCREMENT KEY COMMENT '房产编号',
     user_name VARCHAR(20) NOT NULL comment '房产持有人',
     identity VARCHAR(20) NOT NULL comment '身份证号',

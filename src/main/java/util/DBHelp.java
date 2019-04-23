@@ -13,10 +13,7 @@ import org.slf4j.LoggerFactory;
 
 
 /**
- * @author: 我的袜子都是洞
  * @description: 数据库工具类
- * @path: web-util-DBHelp
- * @date: 2019-01-26 11:01
  */
 public class DBHelp {
     private static final Logger logger = LoggerFactory.getLogger(DBHelp.class);
@@ -60,7 +57,6 @@ public class DBHelp {
         }
         return conn;
     }
-
 
     /**
      * 设置PreparedStatement参数

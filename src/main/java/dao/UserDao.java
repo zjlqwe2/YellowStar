@@ -1,17 +1,9 @@
 package dao;
 
 import entity.User;
-
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author: 我的袜子都是洞
- * @description: 根据用户名获取用户对象
- * @path: web-entity.userDao-UserDao
- * @date: 2019-01-11 21:21
- */
 public interface UserDao
 {
     /**

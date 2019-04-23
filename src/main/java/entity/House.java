@@ -1,51 +1,23 @@
 package entity;
 
 /**
- * @author: 我的袜子都是洞
  * @description: 房产实体
- * @path: web-entity-House
- * @date: 2019-01-11 21:25
  */
 public class House
 {
-    // 房产id
     private int hid;
-    // 房产持有人
-    private String username;
-    // 房产类型
-    private String house_type;
-    // 住房面积
+    private String userName;
+    private String identity;
+    private String phone;
+    private String houseType;
     private int area;
-    // 购房时间
-    private String gmt_buy;
-    // 楼号
+    private String gmtBuy;
     private String building;
-    // 小区单元
     private String unit;
-    // 门牌号
-    private String house_num;
-    // 创建时间
-    private String gmt_create;
-    // 修改时间
-    private String gmt_modified;
-    public House() {
-    }
-
-    public String getGmt_create() {
-        return gmt_create;
-    }
-
-    public void setGmt_create(String gmt_create) {
-        this.gmt_create = gmt_create;
-    }
-
-    public String getGmt_modified() {
-        return gmt_modified;
-    }
-
-    public void setGmt_modified(String gmt_modified) {
-        this.gmt_modified = gmt_modified;
-    }
+    private String houseNum;
+    private int hasCar;
+    private String location;
+    private String licenseplatenumber;
 
     public int getHid() {
         return hid;
@@ -55,23 +27,39 @@ public class House
         this.hid = hid;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getHouse_type() {
-        return house_type;
+    public String getIdentity() {
+        return identity;
     }
 
-    public void setHouse_type(String house_type) {
-        this.house_type = house_type;
+    public void setIdentity(String identity) {
+        this.identity = identity;
     }
 
-    public double getArea() {
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getHouseType() {
+        return houseType;
+    }
+
+    public void setHouseType(String houseType) {
+        this.houseType = houseType;
+    }
+
+    public int getArea() {
         return area;
     }
 
@@ -79,12 +67,12 @@ public class House
         this.area = area;
     }
 
-    public String getGmt_buy() {
-        return gmt_buy;
+    public String getGmtBuy() {
+        return gmtBuy;
     }
 
-    public void setGmt_buy(String gmt_buy) {
-        this.gmt_buy = gmt_buy;
+    public void setGmtBuy(String gmtBuy) {
+        this.gmtBuy = gmtBuy;
     }
 
     public String getBuilding() {
@@ -103,25 +91,54 @@ public class House
         this.unit = unit;
     }
 
-    public String getHouse_num() {
-        return house_num;
+    public String getHouseNum() {
+        return houseNum;
     }
 
-    public void setHouse_num(String house_num) {
-        this.house_num = house_num;
+    public void setHouseNum(String houseNum) {
+        this.houseNum = houseNum;
+    }
+
+    public int getHasCar() {
+        return hasCar;
+    }
+
+    public void setHasCar(int hasCar) {
+        this.hasCar = hasCar;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getLicenseplatenumber() {
+        return licenseplatenumber;
+    }
+
+    public void setLicenseplatenumber(String licenseplatenumber) {
+        this.licenseplatenumber = licenseplatenumber;
     }
 
     @Override
     public String toString() {
-        return "房产信息{" +
-                "房产编号=" + hid +
-                ", 持有人='" + username + '\'' +
-                ", 房产类型='" + house_type + '\'' +
-                ", 房子面积=" + area +
-                ", 购房时间='" + gmt_buy + '\'' +
+        return "业主{" +
+                "业主编号=" + hid +
+                ", 姓名='" + userName + '\'' +
+                ", 身份证号='" + identity + '\'' +
+                ", 手机='" + phone + '\'' +
+                ", 房产类型='" + houseType + '\'' +
+                ", 住房面积=" + area +
+                ", 购买时间='" + gmtBuy + '\'' +
                 ", 楼号='" + building + '\'' +
                 ", 单元号='" + unit + '\'' +
-                ", 门牌号=" + house_num +
+                ", 门牌号='" + houseNum + '\'' +
+                ", 是否有车=" + hasCar +
+                ", 车位='" + location + '\'' +
+                ", 车牌号='" + licenseplatenumber + '\'' +
                 '}';
     }
 }

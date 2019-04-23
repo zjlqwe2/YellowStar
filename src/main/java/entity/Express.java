@@ -1,52 +1,37 @@
 package entity;
 
 /**
- * @author: 我的袜子都是洞
  * @description: 快递实体类
- * @path: web-entity.express-ExpressDao
- * @date: 2019-01-13 14:55
  */
 public class Express
 {
-    private int id;
-    private String phone;
-    private String username;
-    private int take;
-    private String address;
+    private int eid;
+    private int hid;
+    private int isTake;
     private String gmt_create;
-    private String gmt_modified;
 
-    public String getGmt_modified() {
-        return gmt_modified;
+    public int getEid() {
+        return eid;
     }
 
-    public void setGmt_modified(String gmt_modified) {
-        this.gmt_modified = gmt_modified;
+    public void setEid(int eid) {
+        this.eid = eid;
     }
 
-    public int getId() {
-        return id;
+    public int getHid() {
+        return hid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setHid(int hid) {
+        this.hid = hid;
     }
 
-    public int getTake() {
-        return take;
+    public int getIsTake() {
+        return isTake;
     }
 
-    public void setTake(int take) {
-        this.take = take;
-    }
-
-    public Express() { }
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setIsTake(int isTake) {
+        this.isTake = isTake;
     }
 
     public String getGmt_create() {
@@ -57,19 +42,13 @@ public class Express
         this.gmt_create = gmt_create;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    @Override
+    public String toString() {
+        return "快递{" +
+                "eid=" + eid +
+                ", 房产id=" + hid +
+                ", 是否领取=" + isTake +
+                ", 时间='" + gmt_create + '\'' +
+                '}';
     }
 }

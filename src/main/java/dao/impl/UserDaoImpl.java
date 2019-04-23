@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author: 我的袜子都是洞
- * @date: 2019/1/26
  * @description: 用户表Dao层
  */
 public class UserDaoImpl implements UserDao {
@@ -32,16 +30,12 @@ public class UserDaoImpl implements UserDao {
      */
     @Override
     public User getUser(int id) throws SQLException {
-        String sql = "SELECT * FROM yw_user WHERE id=?";
+        String sql = "SELECT * FROM user WHERE id=?";
         return getUser(sql, id);
     }
 
     /**
      * 获取用户的具体处理
-     * @param sql
-     * @param object
-     * @return
-     * @throws SQLException
      */
     private User getUser(String sql,Object object) throws SQLException  {
         List<Object> list = DBHelp.executeQuery(sql, new UserMapperImpl(), object);
@@ -58,8 +52,8 @@ public class UserDaoImpl implements UserDao {
      */
     @Override
     public boolean saveUser(User user)  throws SQLException{
-        String sql = "INSERT INTO yw_user (loginname, password, username, user_type, phone) VALUES (?,?,?,?,?)";
-        int i = DBHelp.executeUpdate(sql, user.getLoginName(), user.getPassWord(),user.getUserName(),  user.getUserType(), user.getPhone());
+        String sql = "INSERT INTO user (loginname, password, username, user_type) VALUES (?,?,?,?)";
+        int i = DBHelp.executeUpdate(sql, user.getLoginName(), user.getPassWord(),user.getUserName(),  user.getUserType());
         if (i == 0) {
             return false;
         } else {
@@ -73,7 +67,7 @@ public class UserDaoImpl implements UserDao {
      */
     @Override
     public List<User> listAll() throws SQLException {
-        String sql = "SELECT * FROM yw_user";
+        String sql = "SELECT * FROM user";
         List<Object> list = DBHelp.executeQuery(sql, new UserMapperImpl());
         if (list==null || list.size()==0) {
             return null;
