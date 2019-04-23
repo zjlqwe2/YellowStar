@@ -12,10 +12,7 @@ import manage.UserManage;
 import util.ObjectFactory;
 
 /**
- * @author: 我的袜子都是洞
  * @description: 处理登陆请求
- * @path: web-servlet-DoLogin
- * @date: 2019-01-26 17:22
  */
 @WebServlet("/dologin")
 public class DoLogin extends HttpServlet

@@ -12,21 +12,18 @@ import java.util.List;
  * @description: 用户表Dao层
  */
 public class UserDaoImpl implements UserDao {
+
     /**
      * 通过用户名获取用户
-     * @param loginname
-     * @return 用户
      */
     @Override
     public User getUser(String loginname) throws SQLException {
-        String sql = "SELECT * FROM yw_user WHERE loginname=?";
+        String sql = "SELECT * FROM user WHERE loginname=?";
         return getUser(sql, loginname);
     }
 
     /**
      * 通过id获取用户
-     * @param id
-     * @return 用户
      */
     @Override
     public User getUser(int id) throws SQLException {
@@ -47,8 +44,6 @@ public class UserDaoImpl implements UserDao {
 
     /**
      * 创建用户
-     * @param user
-     * @return 创建结果
      */
     @Override
     public boolean saveUser(User user)  throws SQLException{
@@ -63,7 +58,6 @@ public class UserDaoImpl implements UserDao {
 
     /**
      * 获取所有用户
-     * @return 用户集
      */
     @Override
     public List<User> listAll() throws SQLException {
@@ -79,4 +73,17 @@ public class UserDaoImpl implements UserDao {
         return users;
     }
 
+    /**
+     * 删除用户
+     */
+    @Override
+    public boolean deleteUser(int id) throws SQLException {
+        String sql = "DELETE FROM user WHERE uid = ?";
+        int flag = DBHelp.executeUpdate(sql,id);
+        if (flag == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
