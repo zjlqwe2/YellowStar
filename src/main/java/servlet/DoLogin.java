@@ -33,12 +33,12 @@ public class DoLogin extends HttpServlet
             try {
                 User user = userManage.login(loginname, password);
                 req.getSession().setAttribute("uid", user.getUid());
-                req.getSession().setAttribute("username", user.getUserName());
-                req.getSession().setAttribute("user_type", user.getUserType());
+                req.getSession().setAttribute("userName", user.getUserName());
+                req.getSession().setAttribute("userType", user.getUserType());
                 req.getRequestDispatcher("profile.jsp").forward(req,resp);
             } catch (UserException e) {
                 req.setAttribute("title", "登陆失败");
-                req.setAttribute("info", e.getMessage());
+                req.setAttribute("detail", e.getMessage());
                 req.getRequestDispatcher("/comm/error.jsp").forward(req, resp);
             }
         }

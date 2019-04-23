@@ -9,7 +9,7 @@
     int userType = (int)session.getAttribute("user_type");
     if(userType != 1) {
         request.setAttribute("title","权限不足");
-        request.setAttribute("info","仅管理员可查看");
+        request.setAttribute("detail","仅管理员可查看");
         request.getRequestDispatcher("/comm/error.jsp").forward(request,response);
     } else {
         UserManage userManage = (UserManage) ObjectFactory.getObject("UserManage");
@@ -18,13 +18,13 @@
             users = userManage.listAllUser();
         } catch (UserException e) {
             request.setAttribute("title","错误：");
-            request.setAttribute("info",e.getMessage());
+            request.setAttribute("detail",e.getMessage());
             request.getRequestDispatcher("/comm/error.jsp").forward(request,response);
         }
         String[] typeName = new String[]{"游客","管理员","物业","业主"};
         if (users.size() == 0) {
             request.setAttribute("title","数据为空");
-            request.setAttribute("info","用户数据为空");
+            request.setAttribute("detail","用户数据为空");
             request.getRequestDispatcher("/comm/error.jsp").forward(request,response);
         }
 %>
@@ -39,7 +39,6 @@
             <th>用户ID</th>
             <th>用户名</th>
             <th>用户类别</th>
-            <th>创建时间</th>
             <th>操作</th>
         </tr>
         <%
@@ -50,7 +49,6 @@
             <td><%=u.getUid()%></td>
             <td><%=u.getUserName()%></td>
             <td><%=typeName[u.getUserType()]%></td>
-            <td><%=u.getGmtCreate()%></td>
             <td><a href="#">管理此账户</a></td>
         </tr>
         <%

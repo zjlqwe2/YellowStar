@@ -2,11 +2,11 @@
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-    String username = "";
+    String userName = "";
     int userType = 0;
-    if (session.getAttribute("username") != null) {
-        username = (String)session.getAttribute("username");
-        userType = (int)session.getAttribute("user_type");
+    if (session.getAttribute("userName") != null) {
+        userName = (String)session.getAttribute("userName");
+        userType = (int)session.getAttribute("userType");
     }
 
     switch (userType) {
@@ -39,9 +39,6 @@
                 <ul class="dropdown-menu">
                     <li><a href="<%=basePath%>addcost.jsp?cost_type=2">电费录入</a></li>
                     <li><a href="<%=basePath%>addcost.jsp?cost_type=1">水费录入</a></li>
-                    <li><a href="<%=basePath%>addcost.jsp?cost_type=3">燃气费录入</a></li>
-                    <li><a href="<%=basePath%>addcost.jsp?cost_type=4">停车信息录入</a></li>
-                    <li><a href="<%=basePath%>addcost.jsp?cost_type=5">物业费录入</a></li>
                 </ul>
             </li>
 
@@ -56,15 +53,6 @@
                     <li><a href="<%=basePath%>costmanage.jsp?cost_type=1">水费查询</a></li>
                     <li><a href="<%=basePath%>allcostmanage.jsp?cost_type=1">总水费查询</a></li>
                     <li role="separator" class="divider"></li>
-                    <li class="dropdown-header">燃气费</li>
-                    <li><a href="<%=basePath%>costmanage.jsp?cost_type=3">燃气费查询</a></li>
-                    <li><a href="<%=basePath%>allcostmanage.jsp?cost_type=3">总燃气费查询</a></li>
-                    <li class="dropdown-header">物业费</li>
-                    <li><a href="<%=basePath%>costmanage.jsp?cost_type=4">物业费查询</a></li>
-                    <li><a href="<%=basePath%>allcostmanage.jsp?cost_type=4">总物业费查询</a></li>
-                    <li class="dropdown-header">停车费</li>
-                    <li><a href="<%=basePath%>carcostmanage.jsp?cost_type=5">停车费查询</a></li>
-                    <li><a href="<%=basePath%>allcarcostmanage.jsp?cost_type=5">总停车费查询</a></li>
                 </ul>
             </li>
 
@@ -79,7 +67,7 @@
         <%--导航右侧部分--%>
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-                <a href="<%=basePath%>profile.jsp" >管理员：<%=username%></a>
+                <a href="<%=basePath%>profile.jsp" >管理员：<%=userName%></a>
             </li>
             <li>
                 <a href="<%=basePath%>logout">注销登陆</a>
@@ -109,9 +97,6 @@
                     <li><a href="<%=basePath%>housemanage.jsp?hid=0">查看房产信息</a></li>
                     <li><a href="<%=basePath%>addcost.jsp?cost_type=2">电费录入</a></li>
                     <li><a href="<%=basePath%>addcost.jsp?cost_type=1">水费录入</a></li>
-                    <li><a href="<%=basePath%>addcost.jsp?cost_type=3">燃气费录入</a></li>
-                    <li><a href="<%=basePath%>addcost.jsp?cost_type=4">停车信息录入</a></li>
-                    <li><a href="<%=basePath%>addcost.jsp?cost_type=5">物业费录入</a></li>
                 </ul>
             </li>
 
@@ -126,15 +111,6 @@
                     <li><a href="<%=basePath%>costmanage.jsp?cost_type=1">水费查询</a></li>
                     <li><a href="<%=basePath%>allcostmanage.jsp?cost_type=1">总水费查询</a></li>
                     <li role="separator" class="divider"></li>
-                    <li class="dropdown-header">燃气费</li>
-                    <li><a href="<%=basePath%>costmanage.jsp?cost_type=3">燃气费查询</a></li>
-                    <li><a href="<%=basePath%>allcostmanage.jsp?cost_type=3">总燃气费查询</a></li>
-                    <li class="dropdown-header">物业费</li>
-                    <li><a href="<%=basePath%>costmanage.jsp?cost_type=4">物业费查询</a></li>
-                    <li><a href="<%=basePath%>allcostmanage.jsp?cost_type=4">总物业费查询</a></li>
-                    <li class="dropdown-header">停车费</li>
-                    <li><a href="<%=basePath%>carcostmanage.jsp?cost_type=5">停车费查询</a></li>
-                    <li><a href="<%=basePath%>allcarcostmanage.jsp?cost_type=5">总停车费查询</a></li>
                 </ul>
             </li>
 
@@ -149,7 +125,7 @@
 
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-                <a href="<%=basePath%>profile.jsp">物业：<%=username%></a>
+                <a href="<%=basePath%>profile.jsp">物业：<%=userName%></a>
             </li>
             <li>
                 <a href="<%=basePath%>logout">注销登陆</a>
@@ -179,7 +155,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-                <a href="<%=basePath%>profile.jsp">业主：<%=username%></a>
+                <a href="<%=basePath%>profile.jsp">业主：<%=userName%></a>
             </li>
             <li>
                 <a href="<%=basePath%>logout">注销登陆</a>

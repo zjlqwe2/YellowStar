@@ -8,10 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @author: 我的袜子都是洞
  * @description: 退出登录
- * @path: web-servlet-Logout
- * @date: 2018-12-31 15:55
  */
 @WebServlet("/logout")
 public class Logout extends HttpServlet
@@ -21,8 +18,8 @@ public class Logout extends HttpServlet
     {
         // 清除Session
         req.getSession().removeAttribute("uid");
-        req.getSession().removeAttribute("username");
-        req.getSession().removeAttribute("type");
+        req.getSession().removeAttribute("userName");
+        req.getSession().removeAttribute("userType");
         req.getSession().invalidate();
         resp.sendRedirect("index.jsp");
     }
