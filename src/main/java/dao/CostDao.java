@@ -5,8 +5,6 @@ import java.util.List;
 
 /**
  * @Description: 费用处理Dao接口
- * @author: 我的袜子都是洞
- * @date: 2019-01-31 15:46
  */
 public interface CostDao {
     /**

@@ -1,4 +1,5 @@
 package entity;
+
 /**
  * @description: 用户实体
  */

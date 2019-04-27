@@ -1,23 +1,25 @@
 package manage.impl;
 
 import dao.UserDao;
+import dao.impl.UserDaoImpl;
 import entity.User;
 import exception.UserException;
 import manage.UserManage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import util.ObjectFactory;
 import java.sql.SQLException;
 import java.util.List;
 
 public class UserManageImpl implements UserManage {
-    private UserDao userDao = (UserDao)ObjectFactory.getObject("UserDao");
+    private UserDao userDao = new UserDaoImpl();
     private static final Logger logger = LoggerFactory.getLogger(UserManageImpl.class);
 
     /**
-     * 用户登录验证
-     * @param loginname
-     * @param password
+     * 验证登录用户
+     * @param loginname 账号
+     * @param password 密码
+     * @return 验证结果
+     * @throws UserException
      */
     @Override
     public User login(String loginname, String password) throws UserException {
@@ -27,12 +29,15 @@ public class UserManageImpl implements UserManage {
         try {
            User user = userDao.getUser(loginname);
            if (user == null) {
-               throw new UserException("用户不存在");
+               // // 情况：用户不存在
+               return null;
            }
            if (user.getPassWord().equals(password)) {
+               // 情况：密码正确
                return user;
            } else {
-               throw new UserException("密码错误");
+               // 情况：密码错误
+               return null;
            }
         } catch (SQLException e) {
             logger.debug(e.getMessage());
