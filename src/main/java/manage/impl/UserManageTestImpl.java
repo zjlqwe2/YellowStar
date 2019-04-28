@@ -19,7 +19,7 @@ public class UserManageTestImpl implements UserManage {
         user.setUid(1);
         user.setLoginName(loginname);
         user.setPassWord(password);
-        user.setUserType(1);
+        user.setUserType(2);
         System.out.println("登陆一个用户");
         return user;
     }
