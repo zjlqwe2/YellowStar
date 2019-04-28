@@ -10,6 +10,14 @@ import java.util.List;
 public interface DeviceManage {
 
     /**
+     * 根据did获取某设备信息
+     * @param did
+     * @return
+     * @throws DeviceException
+     */
+    Device getDevice(int did) throws DeviceException;
+
+    /**
      * 添加设备信息
      * @param device
      * @return

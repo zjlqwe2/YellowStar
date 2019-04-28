@@ -36,6 +36,7 @@ public class DoLogin extends HttpServlet
                 User user = userManage.login(loginname, password);
                 req.getSession().setAttribute("loginname", user.getLoginName());
                 req.getSession().setAttribute("usertype", user.getUserType());
+                req.getSession().setAttribute("userid", user.getUid());
                 req.getRequestDispatcher("profile.jsp").forward(req,resp);
             } catch (UserException e) {
                 req.setAttribute("title", "登陆失败");
