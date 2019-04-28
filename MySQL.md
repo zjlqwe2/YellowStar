@@ -12,7 +12,6 @@
 CREATE TABLE IF NOT EXISTS user (
     uid INT UNSIGNED NOT NULL AUTO_INCREMENT KEY COMMENT 'UID',
     loginname VARCHAR(20) NOT NULL UNIQUE comment '登录名',
-    username VARCHAR(20) NOT NULL UNIQUE comment '用户名',
     password CHAR(32) NOT NULL COMMENT '密码',
     user_type TINYINT UNSIGNED NOT NULL COMMENT '用户类型'
 );
@@ -34,13 +33,12 @@ CREATE TABLE IF NOT EXISTS house (
     building VARCHAR(20) NOT NULL comment '楼号',
     unit VARCHAR(10) NOT NULL comment '小区单元',
     house_num VARCHAR(10) NOT NULL COMMENT '门牌号',
-    has_car TINYINT NOT NULL COMMENT '是否有车',
     location VARCHAR(20) comment '位置',
     licenseplatenumber VARCHAR(8) comment '车牌号'
 );
 ```
 
-## 水费、电费表
+## 水费、电费、物业表
 
 表名：``cost``
 
@@ -63,6 +61,7 @@ CREATE TABLE IF NOT EXISTS cost (
 CREATE TABLE IF NOT EXISTS express (
     eid INT UNSIGNED NOT NULL AUTO_INCREMENT KEY COMMENT '编号',
     hid INT UNSIGNED NOT NULL  COMMENT '外键房产id',
+    express_id varchar(50) NOT NULL COMMENT '快递单号',    
     is_take TINYINT UNSIGNED DEFAULT 0 COMMENT '是否领取',
     gmt_create DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL COMMENT '创建时间',
     FOREIGN KEY(hid) REFERENCES yw_house(hid)
@@ -80,7 +79,7 @@ CREATE TABLE IF NOT EXISTS device (
     device_type VARCHAR(20) NOT NULL comment '设备类型',
     is_service TINYINT UNSIGNED DEFAULT 0 COMMENT '是否维修',
     processing_opinion VARCHAR(20) NOT NULL comment '处理意见',
-    uid INT UNSIGNED NOT NULL COMMENT 'UID',
+    uid INT UNSIGNED NOT NULL COMMENT 'UID' comment '处理人',
     gmt_create DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL COMMENT '创建时间' 
 );
 ```

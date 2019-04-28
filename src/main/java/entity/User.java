@@ -7,7 +7,6 @@ public class User
     private int uid;
     private String loginName;
     private String passWord;
-    private String userName;
     private int userType;
 
     public int getUid() {
@@ -34,13 +33,6 @@ public class User
         this.passWord = passWord;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
 
     public int getUserType() {
         return userType;
@@ -56,7 +48,6 @@ public class User
                 "用户id=" + uid +
                 ", 登录名='" + loginName + '\'' +
                 ", 密码='" + passWord + '\'' +
-                ", 用户姓名='" + userName + '\'' +
                 ", 用户类型=" + userType +
                 '}';
     }

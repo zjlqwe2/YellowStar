@@ -15,7 +15,6 @@ public class House
     private String building;
     private String unit;
     private String houseNum;
-    private int hasCar;
     private String location;
     private String licenseplatenumber;
 
@@ -99,14 +98,6 @@ public class House
         this.houseNum = houseNum;
     }
 
-    public int getHasCar() {
-        return hasCar;
-    }
-
-    public void setHasCar(int hasCar) {
-        this.hasCar = hasCar;
-    }
-
     public String getLocation() {
         return location;
     }
@@ -136,7 +127,6 @@ public class House
                 ", 楼号='" + building + '\'' +
                 ", 单元号='" + unit + '\'' +
                 ", 门牌号='" + houseNum + '\'' +
-                ", 是否有车=" + hasCar +
                 ", 车位='" + location + '\'' +
                 ", 车牌号='" + licenseplatenumber + '\'' +
                 '}';
