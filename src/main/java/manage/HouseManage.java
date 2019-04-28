@@ -40,5 +40,11 @@ public interface HouseManage {
      */
     List<House> listHouse () throws HouseException ;
 
-
+    /**
+     * 根据hid获取房产信息
+     * @param hid
+     * @return
+     * @throws HouseException
+     */
+    House getHouse(int hid) throws HouseException;
 }

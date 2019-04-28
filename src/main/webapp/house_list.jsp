@@ -70,7 +70,7 @@
             <td><%=h.getHouseNum()%></td>
             <td><%=h.getLocation()%></td>
             <td><%=h.getLicenseplatenumber()%></td>
-            <td><a href="<%=basePath%>dodeletehouse?uid=<%=h.getHid()%>">删除账户</a></td>
+            <td><a href="<%=basePath%>house_update.jsp?hid=<%=h.getHid()%>">修改</a>&nbsp;&nbsp;<a href="<%=basePath%>dodeletehouse?hid=<%=h.getHid()%>">删除</a></td>
         </tr>
         <%
             }

@@ -3,7 +3,6 @@ package manage.impl;
 import entity.House;
 import exception.HouseException;
 import manage.HouseManage;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +34,7 @@ public class HouseManageTestImpl implements HouseManage {
     @Override
     public boolean delHouse(int hid) throws HouseException {
         System.out.println("删除一个房产信息");
-        return false;
+        return true;
     }
 
     /**
@@ -48,7 +47,7 @@ public class HouseManageTestImpl implements HouseManage {
     @Override
     public boolean updateHouse(House house) throws HouseException {
         System.out.println("更新一个房产信息");
-        return false;
+        return true;
     }
 
     /**
@@ -76,4 +75,25 @@ public class HouseManageTestImpl implements HouseManage {
         return list;
     }
 
+    /**
+     * 根据hid获取房产信息
+     *
+     * @param hid
+     * @return
+     * @throws HouseException
+     */
+    @Override
+    public House getHouse(int hid) throws HouseException {
+        House house = new House();
+        house.setHid(hid);
+        house.setUserName("张三");
+        house.setPhone("1213123138"+hid);
+        house.setUnit("一单元");
+        house.setArea(12);
+        house.setIdentity("qwqwe");
+        house.setBuilding(hid+"栋");
+        house.setLocation(hid+"车位");
+        house.setHouseType("一室一厅");
+        return house;
+    }
 }
