@@ -18,6 +18,13 @@ public interface UserManage {
      */
     User login(String loginname, String password) throws UserException;
 
+    /**
+     * 获取某用户
+     * @param uid
+     * @return
+     * @throws UserException
+     */
+    User getUser(int uid) throws UserException;
 
     /**
      * 列出所有用户

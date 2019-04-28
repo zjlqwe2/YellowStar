@@ -6,6 +6,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
     int userType = (int)session.getAttribute("usertype");
     if(userType != 1) {
         request.setAttribute("title","权限不足");
@@ -49,7 +52,8 @@
             <td><%=u.getUid()%></td>
             <td><%=u.getLoginName()%></td>
             <td><%=typeName[u.getUserType()]%></td>
-            <td><a href="#">管理此账户</a></td>
+            <td><a href="<%=basePath%>update_user.jsp?uid=<%=u.getUid()%>">修改账户</a></td>
+            <td><a href="<%=basePath%>dodeleteuser?uid=<%=u.getUid()%>">删除账户</a></td>
         </tr>
         <%
             }

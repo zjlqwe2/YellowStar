@@ -23,6 +23,23 @@ public class UserManageTestImpl implements UserManage {
         return user;
     }
 
+    /**
+     * 获取某用户
+     *
+     * @param uid
+     * @return
+     * @throws UserException
+     */
+    @Override
+    public User getUser(int uid) throws UserException {
+        User user = new User();
+        user.setUid(1);
+        user.setLoginName("admin");
+        user.setPassWord("123");
+        user.setUserType(1);
+        return user;
+    }
+
     @Override
     public List<User> listAllUser() throws UserException {
         List<User> list = new ArrayList<>();

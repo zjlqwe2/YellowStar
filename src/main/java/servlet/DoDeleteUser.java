@@ -3,6 +3,7 @@ package servlet;
 import exception.UserException;
 import manage.UserManage;
 import manage.impl.UserManageTestImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,26 +12,29 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @description: 处理创建用户
+ * @description: 处理删除用户请求
  */
-@WebServlet("/docreateuser")
-public class DoCreateUser extends HttpServlet {
+@WebServlet("/dodeleteuser")
+public class DoDeleteUser extends HttpServlet {
     private UserManage userManage = new UserManageTestImpl();
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String loginname = req.getParameter("loginname");
-        String password = req.getParameter("password");
-        int usertype = Integer.parseInt(req.getParameter("usertype"));
-
-        if ("".equals(loginname) || "".equals(password) || usertype==0) {
-            req.setAttribute("title", "创建失败");
-            req.setAttribute("detail", "用户名和密码信息输入不完整");
-
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int usertype = (int)req.getSession().getAttribute("usertype");
+        int uid = 0;
+        uid = Integer.parseInt(req.getParameter("uid")) ;
+        if (uid < 1){
+            req.setAttribute("title", "参数异常");
+            req.setAttribute("detail", "uid参数不能小于1");
+            req.getRequestDispatcher("/comm/error.jsp").forward(req, resp);
+        }
+        if (usertype != 1) {
+            req.setAttribute("title", "权限不足");
+            req.setAttribute("detail", "仅超级管理员可操作");
             req.getRequestDispatcher("/comm/error.jsp").forward(req, resp);
         } else {
             try {
-                boolean flag = userManage.saveUser(loginname, password, usertype);
+                boolean flag = userManage.deleteUser(uid);
                 if (flag) {
                     req.getRequestDispatcher("user_list.jsp").forward(req, resp);
                 }
