@@ -52,7 +52,6 @@
             <td><%=u.getUid()%></td>
             <td><%=u.getLoginName()%></td>
             <td><%=typeName[u.getUserType()]%></td>
-            <td><a href="<%=basePath%>update_user.jsp?uid=<%=u.getUid()%>">修改账户</a></td>
             <td><a href="<%=basePath%>dodeleteuser?uid=<%=u.getUid()%>">删除账户</a></td>
         </tr>
         <%

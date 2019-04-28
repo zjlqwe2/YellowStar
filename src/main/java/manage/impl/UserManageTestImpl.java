@@ -20,6 +20,7 @@ public class UserManageTestImpl implements UserManage {
         user.setLoginName(loginname);
         user.setPassWord(password);
         user.setUserType(1);
+        System.out.println("登陆一个用户");
         return user;
     }
 
@@ -56,11 +57,13 @@ public class UserManageTestImpl implements UserManage {
 
     @Override
     public boolean saveUser(String loginname, String password, int usertype) throws UserException {
+        System.out.println("创建了某个用户");
         return true;
     }
 
     @Override
     public boolean deleteUser(int uid) throws UserException {
+        System.out.println("删除某个用户");
         return true;
     }
 }
