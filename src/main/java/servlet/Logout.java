@@ -17,9 +17,8 @@ public class Logout extends HttpServlet
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {
         // 清除Session
-        req.getSession().removeAttribute("uid");
-        req.getSession().removeAttribute("userName");
-        req.getSession().removeAttribute("userType");
+        req.getSession().removeAttribute("loginname");
+        req.getSession().removeAttribute("usertype");
         req.getSession().invalidate();
         resp.sendRedirect("index.jsp");
     }

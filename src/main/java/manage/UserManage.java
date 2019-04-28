@@ -26,15 +26,15 @@ public interface UserManage {
      */
     List<User> listAllUser () throws UserException;
 
-
     /**
      * 创建新用户
      * @param loginname
      * @param password
+     * @param usertype
      * @return
      * @throws UserException
      */
-    boolean saveUser(String loginname, String password) throws UserException;
+    boolean saveUser(String loginname, String password, int usertype) throws UserException;
 
     /**
      * 删除某用户

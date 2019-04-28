@@ -2,14 +2,16 @@
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-    String userName = "";
-    int userType = 0;
-    if (session.getAttribute("userName") != null) {
-        userName = (String)session.getAttribute("userName");
-        userType = (int)session.getAttribute("userType");
+    String loginname = "";
+    int usertype = 0;
+
+    if (session.getAttribute("username") != null) {
+        loginname = (String)session.getAttribute("username");
+        usertype = (int)session.getAttribute("usertype");
+        System.out.println(usertype);
     }
 
-    switch (userType) {
+    switch (usertype) {
         case 1:
 %>
 <!-- 导航部分 -->
@@ -67,7 +69,7 @@
         <%--导航右侧部分--%>
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-                <a href="<%=basePath%>profile.jsp" >管理员：<%=userName%></a>
+                <a href="<%=basePath%>profile.jsp" >管理员：<%=loginname%></a>
             </li>
             <li>
                 <a href="<%=basePath%>logout">注销登陆</a>
@@ -125,7 +127,7 @@
 
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-                <a href="<%=basePath%>profile.jsp">物业：<%=userName%></a>
+                <a href="<%=basePath%>profile.jsp">物业：<%=loginname%></a>
             </li>
             <li>
                 <a href="<%=basePath%>logout">注销登陆</a>
@@ -134,36 +136,7 @@
     </div>
 </nav>
 <!-- 导航部分结束 -->
-<%
-        break;
-    case 3:
-%>
-<!-- 导航部分 -->
-<%--业主导航--%>
-<nav class="navbar navbar-default" role="navigation">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="<%=basePath%>index.jsp">Yellow Star</a>
-    </div>
-    <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-            <li>
-                <a href="<%=basePath%>index.jsp">主页</a>
-            </li>
-            <li>
-                <a href="<%=basePath%>aboutme.jsp">关于我们</a>
-            </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-                <a href="<%=basePath%>profile.jsp">业主：<%=userName%></a>
-            </li>
-            <li>
-                <a href="<%=basePath%>logout">注销登陆</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-<!-- 导航部分结束 -->
+
 <%
         break;
     default:

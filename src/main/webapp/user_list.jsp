@@ -1,18 +1,18 @@
 <%@ page import="entity.User" %>
 <%@ page import="manage.UserManage" %>
-<%@ page import="util.ObjectFactory" %>
 <%@ page import="java.util.List" %>
 <%@ page import="exception.UserException" %>
+<%@ page import="manage.impl.UserManageTestImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
-    int userType = (int)session.getAttribute("user_type");
+    int userType = (int)session.getAttribute("usertype");
     if(userType != 1) {
         request.setAttribute("title","权限不足");
         request.setAttribute("detail","仅管理员可查看");
         request.getRequestDispatcher("/comm/error.jsp").forward(request,response);
     } else {
-        UserManage userManage = (UserManage) ObjectFactory.getObject("UserManage");
+        UserManage userManage = new UserManageTestImpl();
         List<User> users = null;
         try {
             users = userManage.listAllUser();
@@ -21,7 +21,7 @@
             request.setAttribute("detail",e.getMessage());
             request.getRequestDispatcher("/comm/error.jsp").forward(request,response);
         }
-        String[] typeName = new String[]{"游客","管理员","物业","业主"};
+        String[] typeName = new String[]{"","管理员","物业"};
         if (users.size() == 0) {
             request.setAttribute("title","数据为空");
             request.setAttribute("detail","用户数据为空");
@@ -36,7 +36,7 @@
 <div class="table-responsive">
     <table class="table table-hover table-striped">
         <tr>
-            <th>用户ID</th>
+            <th>用户id</th>
             <th>用户名</th>
             <th>用户类别</th>
             <th>操作</th>
@@ -47,7 +47,7 @@
         %>
         <tr>
             <td><%=u.getUid()%></td>
-            <td><%=u.getUserName()%></td>
+            <td><%=u.getLoginName()%></td>
             <td><%=typeName[u.getUserType()]%></td>
             <td><a href="#">管理此账户</a></td>
         </tr>

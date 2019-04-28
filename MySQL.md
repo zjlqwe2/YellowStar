@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS cost (
     cost_type TINYINT UNSIGNED NOT NULL comment '费用类型',
     price DECIMAL(18,2) UNSIGNED NOT NULL comment '价格',
     gmt_create DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL COMMENT '创建时间',
-    FOREIGN KEY(hid) REFERENCES yw_house(hid)
+    FOREIGN KEY(hid) REFERENCES house(hid)
 );
 ```
 
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS express (
     express_id varchar(50) NOT NULL COMMENT '快递单号',    
     is_take TINYINT UNSIGNED DEFAULT 0 COMMENT '是否领取',
     gmt_create DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL COMMENT '创建时间',
-    FOREIGN KEY(hid) REFERENCES yw_house(hid)
+    FOREIGN KEY(hid) REFERENCES house(hid)
 );
 ```
 
