@@ -60,11 +60,12 @@ CREATE TABLE IF NOT EXISTS cost (
 ```sql
 CREATE TABLE IF NOT EXISTS express (
     eid INT UNSIGNED NOT NULL AUTO_INCREMENT KEY COMMENT '编号',
-    hid INT UNSIGNED NOT NULL  COMMENT '外键房产id',
+    express_name varchar (20) NOT NULL COMMENT '快递名称',
+    username varchar (10) NOT NULL COMMENT '姓名',
+    phone varchar (11) NOT NULL COMMENT '手机号码',
     express_id varchar(50) NOT NULL COMMENT '快递单号',    
     is_take TINYINT UNSIGNED DEFAULT 0 COMMENT '是否领取',
-    gmt_create DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL COMMENT '创建时间',
-    FOREIGN KEY(hid) REFERENCES house(hid)
+    gmt_create DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL COMMENT '创建时间'
 );
 ```
 

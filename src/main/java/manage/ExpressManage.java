@@ -18,20 +18,12 @@ public interface ExpressManage {
     public boolean saveExpress(Express express) throws ExpressException;
 
     /**
-     * 删除快递
+     * 领取快递
      * @param id
      * @return
      * @throws ExpressException
      */
-    public boolean deleteExpress(int id) throws ExpressException;
-
-    /**
-     * 修改快递信息
-     * @param express
-     * @return
-     * @throws ExpressException
-     */
-    public boolean updateExpress(Express express) throws ExpressException;
+    public boolean takeExpress(int id) throws ExpressException;
 
     /**
      * 列出快递信息

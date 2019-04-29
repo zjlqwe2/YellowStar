@@ -6,7 +6,9 @@ package entity;
 public class Express
 {
     private int eid;
-    private int hid;
+    private String username;
+    private String phone;
+    private String express_name;
     private String express_id;
     private int isTake;
     private String gmt_create;
@@ -19,8 +21,28 @@ public class Express
         this.eid = eid;
     }
 
-    public int getHid() {
-        return hid;
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getExpress_name() {
+        return express_name;
+    }
+
+    public void setExpress_name(String express_name) {
+        this.express_name = express_name;
     }
 
     public String getExpress_id() {
@@ -29,10 +51,6 @@ public class Express
 
     public void setExpress_id(String express_id) {
         this.express_id = express_id;
-    }
-
-    public void setHid(int hid) {
-        this.hid = hid;
     }
 
     public int getIsTake() {
@@ -53,12 +71,14 @@ public class Express
 
     @Override
     public String toString() {
-        return "快递{" +
+        return "Express{" +
                 "eid=" + eid +
-                ", hid=" + hid +
-                ", 单号='" + express_id + '\'' +
-                ", 是否领取=" + isTake +
-                ", 创建时间='" + gmt_create + '\'' +
+                ", username='" + username + '\'' +
+                ", phone='" + phone + '\'' +
+                ", express_name='" + express_name + '\'' +
+                ", express_id='" + express_id + '\'' +
+                ", isTake=" + isTake +
+                ", gmt_create='" + gmt_create + '\'' +
                 '}';
     }
 }

@@ -12,7 +12,7 @@ public class ExpressMapperImpl implements RowMapperObject {
     public Object rowMapperObject(ResultSet rs) throws SQLException {
         Express express = new Express();
         express.setEid(rs.getInt("eid"));
-        express.setHid(rs.getInt("hid"));
+
         express.setIsTake(rs.getInt("is_take"));
         express.setGmt_create(rs.getString("gmt_create"));
         return express;
