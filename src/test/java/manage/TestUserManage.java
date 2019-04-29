@@ -4,6 +4,9 @@ import entity.User;
 import exception.UserException;
 import manage.impl.UserManageImpl;
 import org.junit.Test;
+
+import java.sql.SQLException;
+
 import static org.junit.Assert.*;
 
 /**
@@ -53,6 +56,28 @@ public class TestUserManage {
             assertNull(user);
             user = userManage.getUser(10);
             assertNull(user);
+        } catch (UserException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testSaveUser() {
+        System.out.println("测试saveUser(String loginname, String password, int usertype)方法");
+        try {
+            boolean flag = userManage.saveUser("user2","password1",1);
+            assertTrue(flag);
+        } catch (UserException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testDeleteUser() {
+        System.out.println("测试deleteUser(int uid)方法");
+        try {
+            boolean flag = userManage.deleteUser(4);
+            assertTrue(flag);
         } catch (UserException e) {
             e.printStackTrace();
         }
