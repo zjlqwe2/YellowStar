@@ -1,8 +1,9 @@
 package manage;
 
+import entity.House;
 import exception.CostException;
 import entity.Cost;
-import java.util.List;
+import java.util.Map;
 
 /**
  * @description: 费用管理层接口
@@ -22,7 +23,7 @@ public interface CostManage {
      * @return
      * @throws CostException
      */
-    List<Cost> listAllCost(int costType) throws CostException;
+    Map<Cost, House> listAllCost(int costType) throws CostException;
 
     /**
      * 修改费用
