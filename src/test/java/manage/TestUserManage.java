@@ -42,4 +42,19 @@ public class TestUserManage {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void testGetUserByUid() {
+        System.out.println("测试getUser(int uid)方法");
+        try {
+            User user = userManage.getUser(1);
+            checkUserNotNull(user);
+            user = userManage.getUser(-1);
+            assertNull(user);
+            user = userManage.getUser(10);
+            assertNull(user);
+        } catch (UserException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -1,5 +1,7 @@
 package dao;
 
+import entity.Cost;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -11,11 +13,8 @@ import java.util.List;
 public interface CostDao {
     /**
      * 费用录入
-     * @param hid 业主ID
-     * @param costType 费用类型
-     * @param amount 用量
      */
-    boolean saveCost(int hid,int costType,double amount) throws SQLException;
+    boolean saveCost(Cost cost) throws SQLException;
 
     /**
      * 费用查询

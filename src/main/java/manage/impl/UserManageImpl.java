@@ -56,7 +56,18 @@ public class UserManageImpl implements UserManage {
      */
     @Override
     public User getUser(int uid) throws UserException {
-        return null;
+        if (uid < 1) {
+            return null;
+        }
+        try {
+            User user = userDao.getUser(uid);
+            if (user == null) {
+                return null;
+            }
+            return user;
+        } catch (SQLException e) {
+            throw new UserException(e.getMessage());
+        }
     }
 
     /**
@@ -67,7 +78,12 @@ public class UserManageImpl implements UserManage {
      */
     @Override
     public List<User> listAllUser() throws UserException {
-        return null;
+        try {
+            List<User> users = userDao.listAll();
+            return users;
+        } catch (SQLException e) {
+            throw new UserException(e.getMessage());
+        }
     }
 
     /**
@@ -81,7 +97,23 @@ public class UserManageImpl implements UserManage {
      */
     @Override
     public boolean saveUser(String loginname, String password, int usertype) throws UserException {
-        return false;
+        if ("".equals(loginname) || "".equals(password) || usertype<1) {
+            return false;
+        }
+        User user = new User();
+        user.setLoginName(loginname);
+        user.setPassWord(password);
+        user.setUserType(usertype);
+        try {
+            boolean flag = userDao.saveUser(user);
+            if (flag) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new UserException(e.getMessage());
+        }
     }
 
     /**
@@ -93,6 +125,18 @@ public class UserManageImpl implements UserManage {
      */
     @Override
     public boolean deleteUser(int uid) throws UserException {
-        return false;
+        if (uid < 1) {
+            return false;
+        }
+        try {
+            boolean flag = userDao.deleteUser(uid);
+            if (flag) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new UserException(e.getMessage());
+        }
     }
 }
