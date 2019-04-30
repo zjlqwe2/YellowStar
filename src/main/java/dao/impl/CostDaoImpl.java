@@ -38,7 +38,7 @@ public class CostDaoImpl implements CostDao {
      */
     @Override
     public boolean updateCost(Cost cost) throws SQLException {
-        String sql = "UPDATE cost SET price=? WHERE id=？";
+        String sql = "UPDATE cost SET price=? WHERE id=?";
         int i = DBHelp.executeUpdate(sql, cost.getPrice(), cost.getId());
         if (i == 0) {
             return false;

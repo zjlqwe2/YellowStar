@@ -35,25 +35,24 @@ public class ExpressManageTestImpl implements ExpressManage {
     }
 
     /**
-     * 列出快递信息
+     * 列出所有快递信息
      *
      * @return
      * @throws ExpressException
      */
     @Override
-    public List<Express> listExpress() throws ExpressException {
-        List<Express> list = new ArrayList<Express>();
-        for (int i=1; i<20; i++) {
-            Express express = new Express();
-            express.setEid(i);
-            express.setUsername("张三");
-            express.setExpress_name("顺丰");
-            express.setPhone("132****2123");
-            express.setExpress_id("3123121343");
-            express.setIsTake(0);
-            express.setGmt_create("2019-10-"+i);
-            list.add(express);
-        }
-        return list;
+    public List<Express> listAllExpress() throws ExpressException {
+        return null;
+    }
+
+    /**
+     * 列出为领取快递信息
+     *
+     * @return
+     * @throws ExpressException
+     */
+    @Override
+    public List<Express> listNotTakeExpress() throws ExpressException {
+        return null;
     }
 }

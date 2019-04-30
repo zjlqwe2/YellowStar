@@ -4,9 +4,6 @@ import entity.User;
 import exception.UserException;
 import manage.impl.UserManageImpl;
 import org.junit.Test;
-
-import java.sql.SQLException;
-
 import static org.junit.Assert.*;
 
 /**

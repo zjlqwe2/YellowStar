@@ -32,6 +32,22 @@ public class TestCostDao {
     }
 
     @Test
+    public void testUpdateCost() {
+        System.out.println("测试updateCost(Cost cost)方法");
+        Cost cost = new Cost();
+        cost.setId(1);
+        cost.setHid(1);
+        cost.setCostType(2);
+        cost.setPrice(100);
+        try {
+            boolean flag = costDao.updateCost(cost);
+            assertTrue(flag);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
     public void testListTypeCost() {
         System.out.println("测试listTypeCost(int hid, int costType)方法");
         try {

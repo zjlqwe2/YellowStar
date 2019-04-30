@@ -1,12 +1,16 @@
 package manage.impl;
 
 import dao.CostDao;
+import dao.HouseDao;
 import dao.impl.CostDaoImpl;
+import dao.impl.HouseDaoImpl;
 import entity.Cost;
 import entity.House;
 import exception.CostException;
 import manage.CostManage;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,6 +22,7 @@ import java.util.Map;
 public class CostManageImpl implements CostManage {
 
     private CostDao costDao = new CostDaoImpl();
+    private HouseDao houseDao = new HouseDaoImpl();
 
     /**
      * 添加费用
@@ -55,7 +60,25 @@ public class CostManageImpl implements CostManage {
      */
     @Override
     public Map<Cost, House> listAllCost(int costType) throws CostException {
-        return null;
+        if (costType < 1) {
+            return null;
+        }
+        Map<Cost, House> map = new HashMap<Cost, House>();
+        List<Cost> list;
+        try {
+            list = costDao.listAllCost(costType);
+            if (list == null) {
+                return null;
+            }
+            for (Cost c:list) {
+                int hid = c.getHid();
+                House house = houseDao.getHouse(hid);
+                map.put(c,house);
+            }
+            return map;
+        } catch (SQLException e) {
+            throw new CostException(e.getMessage());
+        }
     }
 
     /**
