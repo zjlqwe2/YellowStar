@@ -25,7 +25,7 @@
             request.getRequestDispatcher("/comm/error.jsp").forward(request,response);
         }
         String[] typeName = new String[]{"","管理员","物业"};
-        if (devices.size() == 0) {
+        if (devices == null) {
             request.setAttribute("title","数据为空");
             request.setAttribute("detail","设备数据为空");
             request.getRequestDispatcher("/comm/error.jsp").forward(request,response);
@@ -58,7 +58,7 @@
             <td><%=device.getDevice_type()%></td>
             <td><%=device.getIs_service()%></td>
             <td><%=device.getProcessing_opinion()%></td>
-            <td><%=device.getUser()%></td>
+            <td><%=device.getHandlers()%></td>
             <td><%=device.getGmt_create()%></td>
             <td><a href="<%=basePath%>device_update.jsp?did=<%=device.getDid()%>">修改</a>&nbsp;&nbsp;<a href="<%=basePath%>dodeletedevice?did=<%=device.getDid()%>">删除</a></td>
         </tr>

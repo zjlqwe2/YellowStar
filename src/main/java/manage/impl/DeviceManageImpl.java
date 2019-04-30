@@ -50,8 +50,8 @@ public class DeviceManageImpl implements DeviceManage {
         String device_name = device.getDevice_name();
         String device_type = device.getDevice_type();
         String processing_opinion = device.getProcessing_opinion();
-        String user = device.getUser();
-        if ("".equals(user) ||
+        String handlers = device.getHandlers();
+        if ("".equals(handlers) ||
                 "".equals(device_name) ||
                 "".equals(device_type) ||
                 "".equals(processing_opinion)

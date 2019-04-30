@@ -22,7 +22,7 @@ public class DeviceMapperImpl  implements RowMapperObject {
         device.setDevice_type(rs.getString("device_type"));
         device.setIs_service(rs.getInt("is_service"));
         device.setProcessing_opinion(rs.getString("processing_opinion"));
-        device.setUser(rs.getString("user"));
+        device.setHandlers(rs.getString("handlers"));
         device.setGmt_create(rs.getString("gmt_create"));
         return device;
     }

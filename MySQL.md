@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS device (
     device_type VARCHAR(20) NOT NULL comment '设备类型',
     is_service TINYINT UNSIGNED DEFAULT 0 COMMENT '是否维修',
     processing_opinion VARCHAR(20) NOT NULL comment '处理意见',
-    user varchar (20) NOT NULL comment '处理人',
+    handlers varchar (20) NOT NULL comment '处理人',
     gmt_create DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL COMMENT '创建时间' 
 );
 ```

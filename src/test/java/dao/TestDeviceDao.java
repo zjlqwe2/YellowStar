@@ -25,7 +25,7 @@ public class TestDeviceDao {
         device.setDevice_type("安全设施");
         device.setIs_service(1);
         device.setProcessing_opinion("干就对了");
-        device.setUser("物业大佬");
+        device.setHandlers("物业爸爸");
         try {
             boolean flag = deviceDao.saveDevice(device);
             assertTrue(flag);

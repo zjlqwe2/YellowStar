@@ -24,20 +24,21 @@ public class DoCreateDevice extends HttpServlet {
         String device_name = "";
         String device_type = "";
         String processing_opinion = "";
-        int is_service = 0;
-        String user = "";
+        int is_service = -1;
+        String handlers = "";
         device_name = req.getParameter("device_name");
         device_type = req.getParameter("device_type");
 
         is_service = Integer.parseInt(req.getParameter("is_service"));
         processing_opinion = req.getParameter("processing_opinion");
-        user = req.getParameter("user");
+        handlers = req.getParameter("handlers");
 
         if ("".equals(device_name) ||
             "".equals(device_type) ||
                 "".equals(processing_opinion) ||
                 is_service<0 ||
-                "".equals(user)
+                "".equals(handlers) ||
+                is_service <0
         ) {
             req.setAttribute("title", "添加设备信息失败");
             req.setAttribute("detail", "信息填写不完整");
@@ -50,7 +51,9 @@ public class DoCreateDevice extends HttpServlet {
         device.setDevice_type(device_type);
         device.setIs_service(is_service);
         device.setProcessing_opinion(processing_opinion);
-        device.setUser(user);
+        device.setHandlers(handlers);
+
+        System.out.println(device);
 
         if (usertype != 2) {
             req.setAttribute("title", "权限不足");

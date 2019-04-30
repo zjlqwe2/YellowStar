@@ -21,11 +21,12 @@ public class TestDeviceManage {
     public void testSaveDevice() {
         System.out.println("测试saveDevice(Device device)方法");
         Device device = new Device();
-        device.setDevice_name("警棍");
-        device.setDevice_type("安全设施");
+        device.setDevice_name("警棍1");
+        device.setDevice_type("安全设施2");
         device.setIs_service(1);
         device.setProcessing_opinion("干巴爹");
-        device.setUser("物业大佬");
+        device.setHandlers("物业1");
+        System.out.println(device);
         try {
             boolean flag = deviceManage.saveDevice(device);
             assertTrue(flag);
@@ -43,7 +44,7 @@ public class TestDeviceManage {
         device.setDevice_type("安全设施");
         device.setIs_service(1);
         device.setProcessing_opinion("干巴爹");
-        device.setUser("物业大佬");
+        device.setHandlers("物业的人");
         try {
             boolean flag = deviceManage.updateDevice(device);
             assertTrue(flag);

@@ -9,7 +9,7 @@ public class Device {
     private String device_type;
     private int is_service;
     private String processing_opinion;
-    private String user;
+    private String handlers;
     private String gmt_create;
 
     public int getDid() {
@@ -52,12 +52,12 @@ public class Device {
         this.processing_opinion = processing_opinion;
     }
 
-    public String getUser() {
-        return user;
+    public String getHandlers() {
+        return handlers;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setHandlers(String handlers) {
+        this.handlers = handlers;
     }
 
     public String getGmt_create() {
@@ -76,7 +76,7 @@ public class Device {
                 ", 设备类型='" + device_type + '\'' +
                 ", 是否维修=" + is_service +
                 ", 处理意见='" + processing_opinion + '\'' +
-                ", 处理人=" + user +
+                ", 处理人=" + handlers +
                 ", 创建时间='" + gmt_create + '\'' +
                 '}';
     }

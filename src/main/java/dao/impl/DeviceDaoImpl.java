@@ -45,16 +45,21 @@ public class DeviceDaoImpl implements DeviceDao {
         String device_type = device.getDevice_type();
         int is_service = device.getIs_service();
         String processing_opinion = device.getProcessing_opinion();
-        String user = device.getUser();
-        if ("".equals(user) ||
+        String handlers = device.getHandlers();
+        if ("".equals(handlers) ||
             "".equals(device_name) ||
                 "".equals(device_type) ||
                 "".equals(processing_opinion)
         ) {
             return false;
         }
-        String sql = "INSERT INTO device (device_name, device_type, is_service, processing_opinion, user) VALUES (?,?,?,?,?)";
-        int i = DBHelp.executeUpdate(sql, device_name,device_type,is_service,processing_opinion,user);
+        String sql = "INSERT INTO device (device_name, device_type, is_service, processing_opinion, handlers) VALUES (?,?,?,?,?)";
+        int i = DBHelp.executeUpdate(sql,
+                device_name,
+                device_type,
+                is_service,
+                processing_opinion,
+                handlers);
         if (i == 0) {
             return false;
         } else {
@@ -76,16 +81,22 @@ public class DeviceDaoImpl implements DeviceDao {
         String device_type = device.getDevice_type();
         int is_service = device.getIs_service();
         String processing_opinion = device.getProcessing_opinion();
-        String  user = device.getUser();
-        if (did<1 || "".equals(user) ||
+        String  handlers = device.getHandlers();
+        if (did<1 || "".equals(handlers) ||
                 "".equals(device_name) ||
                 "".equals(device_type) ||
                 "".equals(processing_opinion)
         ) {
             return false;
         }
-        String sql = "UPDATE device SET device_name=?,device_type=?,is_service=?,processing_opinion=?,user=? WHERE did=?";
-        int i = DBHelp.executeUpdate(sql, device_name,device_type,is_service,processing_opinion,user,did);
+        String sql = "UPDATE device SET device_name=?,device_type=?,is_service=?,processing_opinion=?,handlers=? WHERE did=?";
+        int i = DBHelp.executeUpdate(sql,
+                device_name,
+                device_type,
+                is_service,
+                processing_opinion,
+                handlers,
+                did);
         if (i == 0) {
             return false;
         } else {
