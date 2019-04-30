@@ -3,7 +3,7 @@ package servlet;
 import entity.House;
 import exception.HouseException;
 import manage.HouseManage;
-import manage.impl.HouseManageTestImpl;
+import manage.impl.HouseManageImpl;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,11 +16,12 @@ import java.io.IOException;
  */
 @WebServlet("/docreatehouse")
 public class DoCreateHouse extends HttpServlet {
-    private HouseManage houseManage = new HouseManageTestImpl();
+    private HouseManage houseManage = new HouseManageImpl();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int usertype = (int)req.getSession().getAttribute("usertype");
+        String user_name = req.getParameter("user_name");
         String identity = req.getParameter("identity");
         String phone = req.getParameter("phone");
         String house_type = req.getParameter("house_type");
@@ -41,8 +42,10 @@ public class DoCreateHouse extends HttpServlet {
 
         House house = new House();
         house.setIdentity(identity);
+        house.setUserName(user_name);
         house.setPhone(phone);
         house.setArea(area);
+        house.setHouseType(house_type);
         house.setGmtBuy(gmt_buy);
         house.setBuilding(building);
         house.setUnit(unit);
@@ -50,6 +53,8 @@ public class DoCreateHouse extends HttpServlet {
         house.setLocation(location);
         house.setLicenseplatenumber(licenseplatenumber);
 
+        // 测试代码，没有问题删
+        System.out.println(house);
         if (usertype != 2) {
             req.setAttribute("title", "权限不足");
             req.setAttribute("detail", "仅物业管理员可操作");

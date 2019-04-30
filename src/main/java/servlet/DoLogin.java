@@ -9,7 +9,7 @@ import java.io.IOException;
 import entity.User;
 import exception.UserException;
 import manage.UserManage;
-import manage.impl.UserManageTestImpl;
+import manage.impl.UserManageImpl;
 
 /**
  * @description: 处理登陆请求
@@ -17,8 +17,8 @@ import manage.impl.UserManageTestImpl;
 @WebServlet("/dologin")
 public class DoLogin extends HttpServlet
 {
-    // 后端完成需要替换
-    private UserManage userManage = new UserManageTestImpl();
+
+    private UserManage userManage = new UserManageImpl();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,6 +34,12 @@ public class DoLogin extends HttpServlet
         } else {
             try {
                 User user = userManage.login(loginname, password);
+                if (user == null) {
+                    req.setAttribute("title", "登陆失败");
+                    req.setAttribute("detail", "请检查你的账号和密码");
+                    req.getRequestDispatcher("/comm/error.jsp").forward(req, resp);
+                    return;
+                }
                 req.getSession().setAttribute("loginname", user.getLoginName());
                 req.getSession().setAttribute("usertype", user.getUserType());
                 req.getSession().setAttribute("userid", user.getUid());

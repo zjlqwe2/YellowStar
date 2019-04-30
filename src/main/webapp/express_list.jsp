@@ -17,7 +17,7 @@
         ExpressManage expressManage = new ExpressManageTestImpl();
         List<Express> lists = null;
         try {
-            lists = expressManage.listExpress();
+            lists = expressManage.listNotTakeExpress();
         } catch (ExpressException e) {
             request.setAttribute("title","错误：");
             request.setAttribute("detail",e.getMessage());

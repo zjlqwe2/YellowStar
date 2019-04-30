@@ -3,7 +3,8 @@ package servlet;
 import entity.Cost;
 import exception.CostException;
 import manage.CostManage;
-import manage.impl.CostManageTestImpl;
+import manage.impl.CostManageImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +17,7 @@ import java.io.IOException;
  */
 @WebServlet("/docreatecost")
 public class DoCreateCost extends HttpServlet {
-    private CostManage costManage = new CostManageTestImpl();
+    private CostManage costManage = new CostManageImpl();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,22 +29,22 @@ public class DoCreateCost extends HttpServlet {
             return;
         }
         int cost_type = Integer.parseInt(req.getParameter("cost_type"));
-        int operation_hid = Integer.parseInt(req.getParameter("operation_hid"));
+        int hid = Integer.parseInt(req.getParameter("hid"));
         int price = Integer.parseInt(req.getParameter("price"));
-        if (cost_type<1 || operation_hid <1 || price<0) {
+        if (cost_type<1 || hid <1 || price<0) {
             req.setAttribute("title", "参数不完整");
             req.setAttribute("detail", "cost_type、operation_hid、price都有才行喔");
             req.getRequestDispatcher("/comm/error.jsp").forward(req, resp);
             return;
         }
         Cost cost = new Cost();
-        cost.setHid(operation_hid);
+        cost.setHid(hid);
         cost.setCostType(cost_type);
         cost.setPrice(price);
         try {
             boolean flag = costManage.saveCost(cost);
             if (flag) {
-                req.getRequestDispatcher("cost_list.jsp").forward(req, resp);
+                req.getRequestDispatcher("cost_list.jsp?cost_type="+cost_type).forward(req, resp);
             } else {
                 req.setAttribute("title", "添加费用失败");
                 req.setAttribute("detail", "暂无");

@@ -2,7 +2,7 @@ package servlet;
 
 import exception.UserException;
 import manage.UserManage;
-import manage.impl.UserManageTestImpl;
+import manage.impl.UserManageImpl;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +15,7 @@ import java.io.IOException;
  */
 @WebServlet("/docreateuser")
 public class DoCreateUser extends HttpServlet {
-    private UserManage userManage = new UserManageTestImpl();
+    private UserManage userManage = new UserManageImpl();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

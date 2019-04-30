@@ -3,7 +3,8 @@ package servlet;
 import entity.Express;
 import exception.ExpressException;
 import manage.ExpressManage;
-import manage.impl.ExpressManageTestImpl;
+import manage.impl.ExpressManageImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +17,7 @@ import java.io.IOException;
  */
 @WebServlet("/docreateexpress")
 public class DoCreateExpress extends HttpServlet {
-    private ExpressManage expressManage = new ExpressManageTestImpl();
+    private ExpressManage expressManage = new ExpressManageImpl();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

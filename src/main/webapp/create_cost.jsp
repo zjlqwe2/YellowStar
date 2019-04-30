@@ -1,8 +1,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="manage.HouseManage" %>
-<%@ page import="manage.impl.HouseManageTestImpl" %>
 <%@ page import="entity.House" %>
 <%@ page import="exception.HouseException" %>
+<%@ page import="manage.impl.HouseManageImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
@@ -12,7 +12,7 @@
         request.setAttribute("detail","仅物业管理员可查看");
         request.getRequestDispatcher("/comm/error.jsp").forward(request,response);
     } else {
-        HouseManage houseManage = new HouseManageTestImpl();
+        HouseManage houseManage = new HouseManageImpl();
         List<House> houses = null;
         try {
             houses = houseManage.listHouse();
@@ -60,9 +60,9 @@
             <td><%=h.getHouseNum()%></td>
             <td><%=h.getLocation()%></td>
             <td><%=h.getLicenseplatenumber()%></td>
-            <td><a href="create_cost2.jsp?cost_type=1&operation_hid=<%=h.getHid()%>">添加水费</a>、
-                <a href="create_cost2.jsp?cost_type=2&operation_hid=<%=h.getHid()%>">添加电费</a>、
-                <a href="create_cost2.jsp?cost_type=3&operation_hid=<%=h.getHid()%>">添加物业费</a></td>
+            <td><a href="create_cost2.jsp?cost_type=1&hid=<%=h.getHid()%>">添加水费</a>、
+                <a href="create_cost2.jsp?cost_type=2&hid=<%=h.getHid()%>">添加电费</a>、
+                <a href="create_cost2.jsp?cost_type=3&hid=<%=h.getHid()%>">添加物业费</a></td>
         </tr>
         <%
             }

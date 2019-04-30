@@ -3,7 +3,7 @@ package servlet;
 import entity.Device;
 import exception.DeviceException;
 import manage.DeviceManage;
-import manage.impl.DeviceManageTestImpl;
+import manage.impl.DeviceManageImpl;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,23 +16,41 @@ import java.io.IOException;
  */
 @WebServlet("/docreatedevice")
 public class DoCreateDevice extends HttpServlet {
-    private DeviceManage deviceManage = new DeviceManageTestImpl();
+    private DeviceManage deviceManage = new DeviceManageImpl();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int usertype = (int)req.getSession().getAttribute("usertype");
-        String device_name = req.getParameter("device_name");
-        String device_type = req.getParameter("device_type");
-        int is_service = Integer.parseInt(req.getParameter("is_service"));
-        String processing_opinion = req.getParameter("processing_opinion");
-        int uid = (int)req.getSession().getAttribute("userid");
+        String device_name = "";
+        String device_type = "";
+        String processing_opinion = "";
+        int is_service = 0;
+        String user = "";
+        device_name = req.getParameter("device_name");
+        device_type = req.getParameter("device_type");
+
+        is_service = Integer.parseInt(req.getParameter("is_service"));
+        processing_opinion = req.getParameter("processing_opinion");
+        user = req.getParameter("user");
+
+        if ("".equals(device_name) ||
+            "".equals(device_type) ||
+                "".equals(processing_opinion) ||
+                is_service<0 ||
+                "".equals(user)
+        ) {
+            req.setAttribute("title", "添加设备信息失败");
+            req.setAttribute("detail", "信息填写不完整");
+            req.getRequestDispatcher("/comm/error.jsp").forward(req, resp);
+            return;
+        }
 
         Device device = new Device();
         device.setDevice_name(device_name);
         device.setDevice_type(device_type);
         device.setIs_service(is_service);
         device.setProcessing_opinion(processing_opinion);
-        device.setUid(uid);
+        device.setUser(user);
 
         if (usertype != 2) {
             req.setAttribute("title", "权限不足");
@@ -42,7 +60,7 @@ public class DoCreateDevice extends HttpServlet {
             try {
                 boolean flag = deviceManage.saveDevice(device);
                 if (flag) {
-                    req.getRequestDispatcher("house_list.jsp").forward(req, resp);
+                    req.getRequestDispatcher("device_list.jsp").forward(req, resp);
                 } else {
                     req.setAttribute("title", "添加设备信息失败");
                     req.setAttribute("detail", "暂无");

@@ -1,7 +1,7 @@
 <%@ page import="manage.DeviceManage" %>
-<%@ page import="manage.impl.DeviceManageTestImpl" %>
 <%@ page import="entity.Device" %>
 <%@ page import="exception.DeviceException" %>
+<%@ page import="manage.impl.DeviceManageImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     int usertype = (int)session.getAttribute("usertype");
@@ -16,7 +16,7 @@
         request.setAttribute("detail", "did编号不能小于1");
         request.getRequestDispatcher("/comm/error.jsp").forward(request,response);
     }
-    DeviceManage deviceManage = new DeviceManageTestImpl();
+    DeviceManage deviceManage = new DeviceManageImpl();
     Device device = null;
     try {
         device = deviceManage.getDevice(did);

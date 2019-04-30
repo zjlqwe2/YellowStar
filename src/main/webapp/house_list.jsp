@@ -1,8 +1,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="manage.HouseManage" %>
-<%@ page import="manage.impl.HouseManageTestImpl" %>
 <%@ page import="entity.House" %>
 <%@ page import="exception.HouseException" %>
+<%@ page import="manage.impl.HouseManageImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
@@ -15,7 +15,7 @@
         request.setAttribute("detail","仅物业管理员可查看");
         request.getRequestDispatcher("/comm/error.jsp").forward(request,response);
     } else {
-        HouseManage houseManage = new HouseManageTestImpl();
+        HouseManage houseManage = new HouseManageImpl();
         List<House> houses = null;
         try {
             houses = houseManage.listHouse();

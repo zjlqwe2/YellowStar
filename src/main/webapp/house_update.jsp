@@ -1,7 +1,7 @@
 <%@ page import="manage.HouseManage" %>
-<%@ page import="manage.impl.HouseManageTestImpl" %>
 <%@ page import="entity.House" %>
 <%@ page import="exception.HouseException" %>
+<%@ page import="manage.impl.HouseManageImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     int usertype = (int)session.getAttribute("usertype");
@@ -16,7 +16,7 @@
         request.setAttribute("detail", "hid编号不能小于1");
         request.getRequestDispatcher("/comm/error.jsp").forward(request,response);
     }
-    HouseManage houseManage = new HouseManageTestImpl();
+    HouseManage houseManage = new HouseManageImpl();
     House house = null;
     try {
         house = houseManage.getHouse(hid);

@@ -45,7 +45,7 @@
 
             <div class="form-group">
                 <label >购房时间</label>
-                <input type="text" class="form-control" name="gmt_buy">
+                <input type="date" class="form-control" name="gmt_buy">
             </div>
             <br>
 
@@ -68,7 +68,7 @@
             <br>
 
             <div class="form-group">
-                <label >位置</label>
+                <label >车位</label>
                 <input type="text" class="form-control" name="location" >
             </div>
             <br>

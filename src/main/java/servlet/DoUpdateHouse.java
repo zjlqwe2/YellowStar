@@ -3,7 +3,8 @@ package servlet;
 import entity.House;
 import exception.HouseException;
 import manage.HouseManage;
-import manage.impl.HouseManageTestImpl;
+import manage.impl.HouseManageImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +17,7 @@ import java.io.IOException;
  */
 @WebServlet("/doupdatehouse")
 public class DoUpdateHouse extends HttpServlet {
-    private HouseManage houseManage = new HouseManageTestImpl();
+    private HouseManage houseManage = new HouseManageImpl();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

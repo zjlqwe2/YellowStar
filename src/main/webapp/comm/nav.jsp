@@ -5,8 +5,8 @@
     String loginname = "";
     int usertype = 0;
 
-    if (session.getAttribute("username") != null) {
-        loginname = (String)session.getAttribute("username");
+    if (session.getAttribute("loginname") != null) {
+        loginname = (String)session.getAttribute("loginname");
         usertype = (int)session.getAttribute("usertype");
         System.out.println(usertype);
     }
@@ -67,7 +67,7 @@
                 <a href="<%=basePath%>index.jsp">主页</a>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">费用录入<span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">房产管理<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="<%=basePath%>house_list.jsp">查看房产信息</a></li>
                     <li><a href="<%=basePath%>create_house.jsp">添加房产信息</a></li>

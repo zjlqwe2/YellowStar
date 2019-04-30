@@ -25,7 +25,7 @@ public class TestDeviceManage {
         device.setDevice_type("安全设施");
         device.setIs_service(1);
         device.setProcessing_opinion("干巴爹");
-        device.setUid(1);
+        device.setUser("物业大佬");
         try {
             boolean flag = deviceManage.saveDevice(device);
             assertTrue(flag);
@@ -43,7 +43,7 @@ public class TestDeviceManage {
         device.setDevice_type("安全设施");
         device.setIs_service(1);
         device.setProcessing_opinion("干巴爹");
-        device.setUid(1);
+        device.setUser("物业大佬");
         try {
             boolean flag = deviceManage.updateDevice(device);
             assertTrue(flag);

@@ -2,7 +2,8 @@ package servlet;
 
 import exception.DeviceException;
 import manage.DeviceManage;
-import manage.impl.DeviceManageTestImpl;
+import manage.impl.DeviceManageImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +16,7 @@ import java.io.IOException;
  */
 @WebServlet("/dodeletedevice")
 public class DoDeleteDevice extends HttpServlet {
-    private DeviceManage deviceManage = new DeviceManageTestImpl();
+    private DeviceManage deviceManage = new DeviceManageImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

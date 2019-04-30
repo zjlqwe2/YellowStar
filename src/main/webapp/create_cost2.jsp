@@ -8,7 +8,7 @@
     }
 
     int cost_type = Integer.parseInt(request.getParameter("cost_type"));
-    int operation_hid = Integer.parseInt(request.getParameter("operation_hid"));
+    int hid = Integer.parseInt(request.getParameter("hid"));
 %>
 <jsp:include page="comm/header.jsp" flush="true"  />
 <jsp:include page="comm/nav.jsp" flush="true" />
@@ -17,7 +17,7 @@
     <div class="panel-body">
         <form action="docreatecost" method="POST">
             <input type="hidden" name="cost_type" value="<%=cost_type%>">
-            <input type="hidden" name="operation_hid" value="<%=operation_hid%>">
+            <input type="hidden" name="hid" value="<%=hid%>">
 
             <div class="form-group">
                 <label >价格</label>

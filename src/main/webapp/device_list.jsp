@@ -1,8 +1,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="manage.DeviceManage" %>
-<%@ page import="manage.impl.DeviceManageTestImpl" %>
 <%@ page import="entity.Device" %>
 <%@ page import="exception.DeviceException" %>
+<%@ page import="manage.impl.DeviceManageImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
@@ -15,7 +15,7 @@
         request.setAttribute("detail","仅物业管理员可查看");
         request.getRequestDispatcher("/comm/error.jsp").forward(request,response);
     } else {
-        DeviceManage deviceManage = new DeviceManageTestImpl();
+        DeviceManage deviceManage = new DeviceManageImpl();
         List<Device> devices = null;
         try {
             devices = deviceManage.listDevice();
@@ -35,7 +35,7 @@
 <jsp:include page="comm/header.jsp" flush="true"  />
 <jsp:include page="comm/nav.jsp" flush="true" />
 
-<h1 class="text-center" >小区房产信息管理</h1>
+<h1 class="text-center" >小区设备管理</h1>
 <div class="table-responsive">
     <table class="table table-hover table-striped">
         <tr>
@@ -58,7 +58,7 @@
             <td><%=device.getDevice_type()%></td>
             <td><%=device.getIs_service()%></td>
             <td><%=device.getProcessing_opinion()%></td>
-            <td><%=device.getProcessing_opinion()%></td>
+            <td><%=device.getUser()%></td>
             <td><%=device.getGmt_create()%></td>
             <td><a href="<%=basePath%>device_update.jsp?did=<%=device.getDid()%>">修改</a>&nbsp;&nbsp;<a href="<%=basePath%>dodeletedevice?did=<%=device.getDid()%>">删除</a></td>
         </tr>

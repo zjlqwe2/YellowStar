@@ -2,7 +2,7 @@
 <%@ page import="manage.UserManage" %>
 <%@ page import="java.util.List" %>
 <%@ page import="exception.UserException" %>
-<%@ page import="manage.impl.UserManageTestImpl" %>
+<%@ page import="manage.impl.UserManageImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
@@ -15,7 +15,7 @@
         request.setAttribute("detail","仅管理员可查看");
         request.getRequestDispatcher("/comm/error.jsp").forward(request,response);
     } else {
-        UserManage userManage = new UserManageTestImpl();
+        UserManage userManage = new UserManageImpl();
         List<User> users = null;
         try {
             users = userManage.listAllUser();

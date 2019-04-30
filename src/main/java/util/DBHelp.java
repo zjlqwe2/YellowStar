@@ -23,7 +23,8 @@ public class DBHelp {
     static {
         try {
             ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-            prop.load (classloader.getResourceAsStream("connect.properties"));
+            prop.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("connect.properties"));
+//            prop.load (classloader.getResourceAsStream("connect.properties"));
             ds = BasicDataSourceFactory.createDataSource(prop);
         } catch (FileNotFoundException e) {
             logger.error(e.getMessage());
