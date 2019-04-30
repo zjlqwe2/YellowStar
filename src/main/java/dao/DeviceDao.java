@@ -23,6 +23,14 @@ public interface DeviceDao {
     boolean saveDevice(Device device) throws SQLException;
 
     /**
+     * 更新设备
+     * @param device
+     * @return
+     * @throws SQLException
+     */
+    boolean updateDevice(Device device) throws SQLException;
+
+    /**
      * 删除设备
      * @param did
      * @return

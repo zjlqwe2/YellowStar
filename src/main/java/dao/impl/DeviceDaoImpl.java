@@ -63,6 +63,37 @@ public class DeviceDaoImpl implements DeviceDao {
     }
 
     /**
+     * 更新设备
+     *
+     * @param device
+     * @return
+     * @throws SQLException
+     */
+    @Override
+    public boolean updateDevice(Device device) throws SQLException {
+        int did = device.getDid();
+        String device_name = device.getDevice_name();
+        String device_type = device.getDevice_type();
+        int is_service = device.getIs_service();
+        String processing_opinion = device.getProcessing_opinion();
+        int uid = device.getUid();
+        if (did<1 ||uid<1 ||
+                "".equals(device_name) ||
+                "".equals(device_type) ||
+                "".equals(processing_opinion)
+        ) {
+            return false;
+        }
+        String sql = "UPDATE device SET device_name=?,device_type=?,is_service=?,processing_opinion=? WHERE did=?";
+        int i = DBHelp.executeUpdate(sql, device_name,device_type,is_service,processing_opinion,did);
+        if (i == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
      * 删除设备
      *
      * @param did

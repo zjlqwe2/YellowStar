@@ -26,9 +26,16 @@ public interface ExpressManage {
     public boolean takeExpress(int id) throws ExpressException;
 
     /**
-     * 列出快递信息
+     * 列出所有快递信息
      * @return
      * @throws ExpressException
      */
-    public List<Express> listExpress() throws ExpressException;
+    public List<Express> listAllExpress() throws ExpressException;
+
+    /**
+     * 列出为领取快递信息
+     * @return
+     * @throws ExpressException
+     */
+    public List<Express> listNotTakeExpress() throws ExpressException;
 }

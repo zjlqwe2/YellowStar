@@ -1,11 +1,11 @@
 package manage.impl;
 
-import dao.UserDao;
-import dao.impl.UserDaoImpl;
+import dao.HouseDao;
+import dao.impl.HouseDaoImpl;
 import entity.House;
 import exception.HouseException;
 import manage.HouseManage;
-
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class HouseManageImpl implements HouseManage {
 
-
+    private HouseDao houseDao = new HouseDaoImpl();
 
     /**
      * 添加房产信息
@@ -27,7 +27,39 @@ public class HouseManageImpl implements HouseManage {
      */
     @Override
     public boolean saveHouse(House house) throws HouseException {
-        return false;
+        int hid = house.getHid();
+        String user_name = house.getUserName();
+        String identity = house.getIdentity();
+        String phone = house.getPhone();
+        String house_type = house.getHouseType();
+        int area = house.getArea();
+        String gmt_buy = house.getGmtBuy();
+        String building = house.getBuilding();
+        String unit = house.getUnit();
+        String house_num = house.getHouseNum();
+        if (hid<1 ||
+                "".equals(user_name) ||
+                "".equals(identity) ||
+                "".equals(phone) ||
+                "".equals(house_type) ||
+                area<0 ||
+                "".equals(gmt_buy) ||
+                "".equals(building) ||
+                "".equals(unit) ||
+                "".equals(house_num)
+        ) {
+            return false;
+        }
+        try {
+            boolean flag = houseDao.saveHouse(house);
+            if (flag) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new HouseException(e.getMessage());
+        }
     }
 
     /**
@@ -39,7 +71,19 @@ public class HouseManageImpl implements HouseManage {
      */
     @Override
     public boolean delHouse(int hid) throws HouseException {
-        return false;
+        if (hid < 1) {
+            return false;
+        }
+        try {
+            boolean flag = houseDao.delHouse(hid);
+            if (flag) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new HouseException(e.getMessage());
+        }
     }
 
     /**
@@ -51,7 +95,39 @@ public class HouseManageImpl implements HouseManage {
      */
     @Override
     public boolean updateHouse(House house) throws HouseException {
-        return false;
+        int hid = house.getHid();
+        String user_name = house.getUserName();
+        String identity = house.getIdentity();
+        String phone = house.getPhone();
+        String house_type = house.getHouseType();
+        int area = house.getArea();
+        String gmt_buy = house.getGmtBuy();
+        String building = house.getBuilding();
+        String unit = house.getUnit();
+        String house_num = house.getHouseNum();
+        if (hid<1 ||
+                "".equals(user_name) ||
+                "".equals(identity) ||
+                "".equals(phone) ||
+                "".equals(house_type) ||
+                area<0 ||
+                "".equals(gmt_buy) ||
+                "".equals(building) ||
+                "".equals(unit) ||
+                "".equals(house_num)
+        ) {
+            return false;
+        }
+        try {
+            boolean flag = houseDao.updateHouse(house);
+            if (flag) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new HouseException(e.getMessage());
+        }
     }
 
     /**
@@ -62,7 +138,12 @@ public class HouseManageImpl implements HouseManage {
      */
     @Override
     public List<House> listHouse() throws HouseException {
-        return null;
+        try {
+            List<House> lists = houseDao.listAll();
+            return lists;
+        } catch (SQLException e) {
+            throw new HouseException(e.getMessage());
+        }
     }
 
     /**
@@ -74,6 +155,14 @@ public class HouseManageImpl implements HouseManage {
      */
     @Override
     public House getHouse(int hid) throws HouseException {
-        return null;
+        if (hid < 1) {
+            return null;
+        }
+        try {
+            House house = houseDao.getHouse(hid);
+            return house;
+        } catch (SQLException e) {
+            throw new HouseException(e.getMessage());
+        }
     }
 }

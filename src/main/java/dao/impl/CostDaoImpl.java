@@ -30,6 +30,45 @@ public class CostDaoImpl implements CostDao {
     }
 
     /**
+     * 费用修改
+     *
+     * @param cost
+     * @return
+     * @throws SQLException
+     */
+    @Override
+    public boolean updateCost(Cost cost) throws SQLException {
+        String sql = "UPDATE cost SET price=? WHERE id=？";
+        int i = DBHelp.executeUpdate(sql, cost.getPrice(), cost.getId());
+        if (i == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
+     * 删除某费用
+     *
+     * @param id
+     * @return
+     * @throws SQLException
+     */
+    @Override
+    public boolean deleteCost(int id) throws SQLException {
+        if(id < 1) {
+            return false;
+        }
+        String sql = "DELETE FROM cost WHERE id=?";
+        int i = DBHelp.executeUpdate(sql, id);
+        if (i == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
      * 费用查询
      *
      * @param hid      业主ID
