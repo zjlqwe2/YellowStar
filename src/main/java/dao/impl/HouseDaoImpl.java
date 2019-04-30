@@ -22,7 +22,7 @@ public class HouseDaoImpl implements HouseDao {
      */
     @Override
     public boolean saveHouse(House house) throws SQLException {
-        String sql = "INSERT INTO house (user_name, identity, phone, house_type, area, gmt_buy, building, unit, house_num, location, licenseplatenumber) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO house (user_name, identity, phone, house_type, area, gmt_buy, building, unit, house_num, location,brand, licenseplatenumber) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         int i = DBHelp.executeUpdate(sql,
                 house.getUserName(),
                 house.getIdentity(),
@@ -34,6 +34,7 @@ public class HouseDaoImpl implements HouseDao {
                 house.getUnit(),
                 house.getHouseNum(),
                 house.getLocation(),
+                house.getBrand(),
                 house.getLicenseplatenumber()
                 );
         if (i == 0) {
@@ -95,6 +96,7 @@ public class HouseDaoImpl implements HouseDao {
         String unit = house.getUnit();
         String house_num = house.getHouseNum();
         String location = house.getLocation();
+        String brand = house.getBrand();
         String licenseplatenumber = house.getLicenseplatenumber();
         if (hid<1 ||
                 "".equals(user_name) ||
@@ -109,8 +111,8 @@ public class HouseDaoImpl implements HouseDao {
         ) {
             return false;
         }
-        String sql = "UPDATE house SET user_name=?,identity=?,phone=?,house_type=?,area=?,gmt_buy=?,building=?,unit=?,house_num=?,location=?,licenseplatenumber=?  WHERE hid=?";
-        int flag = DBHelp.executeUpdate(sql,user_name,identity,phone,house_type,area,gmt_buy,building,unit,house_num,location,licenseplatenumber,hid);
+        String sql = "UPDATE house SET user_name=?,identity=?,phone=?,house_type=?,area=?,gmt_buy=?,building=?,unit=?,house_num=?,location=?,brand=?,licenseplatenumber=?  WHERE hid=?";
+        int flag = DBHelp.executeUpdate(sql,user_name,identity,phone,house_type,area,gmt_buy,building,unit,house_num,location,brand,licenseplatenumber,hid);
         if (flag == 0) {
             return false;
         } else {

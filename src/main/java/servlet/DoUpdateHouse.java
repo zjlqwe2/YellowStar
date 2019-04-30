@@ -4,7 +4,6 @@ import entity.House;
 import exception.HouseException;
 import manage.HouseManage;
 import manage.impl.HouseManageImpl;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,6 +39,7 @@ public class DoUpdateHouse extends HttpServlet {
         }
 
         String location = req.getParameter("location");
+        String brand = req.getParameter("brand");
         String licenseplatenumber = req.getParameter("licenseplatenumber");
 
         House house = new House();
@@ -54,6 +54,7 @@ public class DoUpdateHouse extends HttpServlet {
         house.setUnit(unit);
         house.setHouseNum(house_num);
         house.setLocation(location);
+        house.setBrand(brand);
         house.setLicenseplatenumber(licenseplatenumber);
 
         if (hid < 1){

@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS house (
     unit VARCHAR(20) NOT NULL comment '小区单元',
     house_num VARCHAR(20) NOT NULL COMMENT '门牌号',
     location VARCHAR(20) comment '位置',
+    brand VARCHAR (20) comment '品牌',
     licenseplatenumber VARCHAR(8) comment '车牌号'
 );
 ```

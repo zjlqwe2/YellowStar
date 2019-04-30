@@ -16,7 +16,16 @@ public class House
     private String unit;
     private String houseNum;
     private String location;
+    private String brand;
     private String licenseplatenumber;
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
 
     public int getHid() {
         return hid;
@@ -116,19 +125,20 @@ public class House
 
     @Override
     public String toString() {
-        return "业主{" +
-                "业主编号=" + hid +
-                ", 姓名='" + userName + '\'' +
-                ", 身份证号='" + identity + '\'' +
-                ", 手机='" + phone + '\'' +
-                ", 房产类型='" + houseType + '\'' +
-                ", 住房面积=" + area +
-                ", 购买时间='" + gmtBuy + '\'' +
-                ", 楼号='" + building + '\'' +
-                ", 单元号='" + unit + '\'' +
-                ", 门牌号='" + houseNum + '\'' +
-                ", 车位='" + location + '\'' +
-                ", 车牌号='" + licenseplatenumber + '\'' +
+        return "House{" +
+                "hid=" + hid +
+                ", userName='" + userName + '\'' +
+                ", identity='" + identity + '\'' +
+                ", phone='" + phone + '\'' +
+                ", houseType='" + houseType + '\'' +
+                ", area=" + area +
+                ", gmtBuy='" + gmtBuy + '\'' +
+                ", building='" + building + '\'' +
+                ", unit='" + unit + '\'' +
+                ", houseNum='" + houseNum + '\'' +
+                ", location='" + location + '\'' +
+                ", brand='" + brand + '\'' +
+                ", licenseplatenumber='" + licenseplatenumber + '\'' +
                 '}';
     }
 }

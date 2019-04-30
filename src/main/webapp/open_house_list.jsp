@@ -8,36 +8,27 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
-    String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-
-    int userType = (int)session.getAttribute("usertype");
-    if(userType != 2) {
-        request.setAttribute("title","权限不足");
-        request.setAttribute("detail","仅物业管理员可查看");
+    HouseManage houseManage = new HouseManageImpl();
+    List<House> houses = null;
+    try {
+        houses = houseManage.listHouse();
+    } catch (HouseException e) {
+        request.setAttribute("title","错误：");
+        request.setAttribute("detail",e.getMessage());
         request.getRequestDispatcher("/comm/error.jsp").forward(request,response);
-    } else {
-        HouseManage houseManage = new HouseManageImpl();
-        List<House> houses = null;
-        try {
-            houses = houseManage.listHouse();
-        } catch (HouseException e) {
-            request.setAttribute("title","错误：");
-            request.setAttribute("detail",e.getMessage());
-            request.getRequestDispatcher("/comm/error.jsp").forward(request,response);
-        }
-        String[] typeName = new String[]{"","管理员","物业"};
-        if (houses.size() == 0) {
-            request.setAttribute("title","数据为空");
-            request.setAttribute("detail","房产数据为空");
-            request.getRequestDispatcher("/comm/error.jsp").forward(request,response);
-        }
+    }
+    String[] typeName = new String[]{"","管理员","物业"};
+    if (houses == null) {
+        request.setAttribute("title","数据为空");
+        request.setAttribute("detail","房产数据为空");
+        request.getRequestDispatcher("/comm/error.jsp").forward(request,response);
+    }
 %>
 
 <jsp:include page="comm/header.jsp" flush="true"  />
 <jsp:include page="comm/nav.jsp" flush="true" />
 
-<h1 class="text-center" >小区房产信息管理</h1>
+<h1 class="text-center" >小区房产信息查询</h1>
 <div class="table-responsive">
     <table class="table table-hover table-striped">
         <tr>
@@ -54,7 +45,6 @@
             <th>位置</th>
             <th>车辆信息</th>
             <th>车牌号</th>
-            <th>操作</th>
         </tr>
         <%
             for(int i=0;i<houses.size();i++) {
@@ -78,7 +68,6 @@
             <td><c:out value="${location}" default="无" escapeXml="false"></c:out></td>
             <td><c:out value="${brand}" default="无" escapeXml="false"></c:out></td>
             <td><c:out value="${Licenseplatenumber}" default="无" escapeXml="false"></c:out></td>
-            <td><a href="<%=basePath%>house_update.jsp?hid=<%=h.getHid()%>">修改</a>&nbsp;&nbsp;<a href="<%=basePath%>dodeletehouse?hid=<%=h.getHid()%>">删除</a></td>
         </tr>
         <%
             }
@@ -87,6 +76,3 @@
 </div>
 
 <jsp:include page="comm/footer.jsp" flush="true" />
-<%
-    }
-%>

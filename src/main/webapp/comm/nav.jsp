@@ -141,6 +141,25 @@
             <li>
                 <a href="<%=basePath%>index.jsp">主页</a>
             </li>
+
+            <li>
+                <a href="<%=basePath%>open_house_list.jsp">房产信息查询</a>
+            </li>
+
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">费用查询<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="<%=basePath%>open_cost_list.jsp?cost_type=1">水费查询</a></li>
+                    <li><a href="<%=basePath%>open_cost_list.jsp?cost_type=2">电费查询</a></li>
+                    <li><a href="<%=basePath%>open_cost_list.jsp?cost_type=3">物业费查询</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="<%=basePath%>open_express_list.jsp">快递查询</a>
+            </li>
+
             <li>
                 <a href="<%=basePath%>about.jsp">关于我们</a>
             </li>

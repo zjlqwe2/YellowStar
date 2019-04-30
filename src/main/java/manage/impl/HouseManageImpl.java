@@ -35,6 +35,7 @@ public class HouseManageImpl implements HouseManage {
         String gmt_buy = house.getGmtBuy();
         String building = house.getBuilding();
         String unit = house.getUnit();
+        String brand = house.getBrand();
         String house_num = house.getHouseNum();
         if ("".equals(user_name) ||
                 "".equals(identity) ||
@@ -44,7 +45,8 @@ public class HouseManageImpl implements HouseManage {
                 "".equals(gmt_buy) ||
                 "".equals(building) ||
                 "".equals(unit) ||
-                "".equals(house_num)
+                "".equals(house_num) ||
+                "".equals(brand)
         ) {
             return false;
         }

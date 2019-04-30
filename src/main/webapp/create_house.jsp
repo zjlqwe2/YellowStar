@@ -74,6 +74,12 @@
             <br>
 
             <div class="form-group">
+                <label >车辆信息</label>
+                <input type="text" class="form-control" name="brand" >
+            </div>
+            <br>
+
+            <div class="form-group">
                 <label >车牌号</label>
                 <input type="text" class="form-control" name="licenseplatenumber">
             </div>

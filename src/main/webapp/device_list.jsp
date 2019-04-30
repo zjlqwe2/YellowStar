@@ -56,7 +56,7 @@
             <td><%=device.getDid()%></td>
             <td><%=device.getDevice_name()%></td>
             <td><%=device.getDevice_type()%></td>
-            <td><%=device.getIs_service()%></td>
+            <td><%=is_service_str[device.getIs_service()]%></td>
             <td><%=device.getProcessing_opinion()%></td>
             <td><%=device.getHandlers()%></td>
             <td><%=device.getGmt_create()%></td>

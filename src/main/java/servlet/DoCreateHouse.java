@@ -38,6 +38,7 @@ public class DoCreateHouse extends HttpServlet {
         }
 
         String location = req.getParameter("location");
+        String brand = req.getParameter("brand");
         String licenseplatenumber = req.getParameter("licenseplatenumber");
 
         House house = new House();
@@ -51,6 +52,7 @@ public class DoCreateHouse extends HttpServlet {
         house.setUnit(unit);
         house.setHouseNum(house_num);
         house.setLocation(location);
+        house.setBrand(brand);
         house.setLicenseplatenumber(licenseplatenumber);
 
         // 测试代码，没有问题删

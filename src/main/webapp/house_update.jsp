@@ -95,6 +95,13 @@
             <br>
 
             <div class="form-group">
+                <label >车辆信息</label>
+                <input type="text" class="form-control" name="brand" value="<%=house.getBrand()%>">
+            </div>
+            <br>
+
+
+            <div class="form-group">
                 <label >车牌号</label>
                 <input type="text" class="form-control" name="licenseplatenumber" value="<%=house.getLicenseplatenumber()%>">
             </div>

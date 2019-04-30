@@ -28,6 +28,7 @@ public class HouseMapperImpl implements RowMapperObject {
         house.setUnit(rs.getString("unit"));
         house.setHouseNum(rs.getString("house_num"));
         house.setLocation(rs.getString("location"));
+        house.setBrand(rs.getString("brand"));
         house.setLicenseplatenumber(rs.getString("licenseplatenumber"));
         return house;
     }
