@@ -1,9 +1,11 @@
+<%@ page isELIgnored="false" %>
 <%@ page import="java.util.List" %>
 <%@ page import="manage.HouseManage" %>
 <%@ page import="entity.House" %>
 <%@ page import="exception.HouseException" %>
 <%@ page import="manage.impl.HouseManageImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
     String path = request.getContextPath();
@@ -58,6 +60,7 @@
                 House h = houses.get(i);
         %>
         <tr>
+
             <td><%=h.getHid()%></td>
             <td><%=h.getUserName()%></td>
             <td><%=h.getIdentity()%></td>
@@ -68,8 +71,10 @@
             <td><%=h.getBuilding()%></td>
             <td><%=h.getUnit()%></td>
             <td><%=h.getHouseNum()%></td>
-            <td><%=h.getLocation()%></td>
-            <td><%=h.getLicenseplatenumber()%></td>
+            <c:set value="<%=h.getLocation()%>" var="location" ></c:set>
+            <td><c:out value="${location}" default="无" escapeXml="false"></c:out></td>
+            <c:set value="<%=h.getLicenseplatenumber()%>" var="Licenseplatenumber" ></c:set>
+            <td><c:out value="${Licenseplatenumber}" default="无" escapeXml="false"></c:out></td>
             <td><a href="<%=basePath%>house_update.jsp?hid=<%=h.getHid()%>">修改</a>&nbsp;&nbsp;<a href="<%=basePath%>dodeletehouse?hid=<%=h.getHid()%>">删除</a></td>
         </tr>
         <%

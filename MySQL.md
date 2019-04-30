@@ -26,13 +26,13 @@ CREATE TABLE IF NOT EXISTS house (
     hid INT UNSIGNED NOT NULL AUTO_INCREMENT KEY COMMENT '房产编号',
     user_name VARCHAR(20) NOT NULL comment '房产持有人',
     identity VARCHAR(20) NOT NULL comment '身份证号',
-    phone VARCHAR(11) NOT NULL comment '手机号码',
+    phone VARCHAR(20) NOT NULL comment '手机号码',
     house_type VARCHAR(20) NOT NULL comment '房产类型',
     area INT UNSIGNED NOT NULL COMMENT '住房面积',
     gmt_buy DATE NOT NULL COMMENT '购房时间',
     building VARCHAR(20) NOT NULL comment '楼号',
-    unit VARCHAR(10) NOT NULL comment '小区单元',
-    house_num VARCHAR(10) NOT NULL COMMENT '门牌号',
+    unit VARCHAR(20) NOT NULL comment '小区单元',
+    house_num VARCHAR(20) NOT NULL COMMENT '门牌号',
     location VARCHAR(20) comment '位置',
     licenseplatenumber VARCHAR(8) comment '车牌号'
 );

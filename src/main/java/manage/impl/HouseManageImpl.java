@@ -27,7 +27,6 @@ public class HouseManageImpl implements HouseManage {
      */
     @Override
     public boolean saveHouse(House house) throws HouseException {
-        int hid = house.getHid();
         String user_name = house.getUserName();
         String identity = house.getIdentity();
         String phone = house.getPhone();
@@ -37,8 +36,7 @@ public class HouseManageImpl implements HouseManage {
         String building = house.getBuilding();
         String unit = house.getUnit();
         String house_num = house.getHouseNum();
-        if (hid<1 ||
-                "".equals(user_name) ||
+        if ("".equals(user_name) ||
                 "".equals(identity) ||
                 "".equals(phone) ||
                 "".equals(house_type) ||

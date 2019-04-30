@@ -21,19 +21,19 @@
 
             <div class="form-group">
                 <label >姓名</label>
-                <input type="password" class="form-control" name="username" placeholder="姓名">
+                <input type="text" class="form-control" name="username" placeholder="姓名">
             </div>
             <br>
 
             <div class="form-group">
                 <label >手机号码</label>
-                <input type="password" class="form-control" name="phone" placeholder="手机号码">
+                <input type="text" class="form-control" name="phone" placeholder="手机号码">
             </div>
             <br>
 
             <div class="form-group">
                 <label >快递单号</label>
-                <input type="password" class="form-control" name="express_id" placeholder="快递单号">
+                <input type="text" class="form-control" name="express_id" placeholder="快递单号">
             </div>
             <br>
 

@@ -41,7 +41,7 @@
 
             <div class="form-group">
                 <label >处理人</label>
-                <input type="text" class="form-control" name="user">
+                <input type="text" class="form-control" name="handlers">
             </div>
             <br>
 

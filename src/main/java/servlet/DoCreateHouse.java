@@ -61,6 +61,7 @@ public class DoCreateHouse extends HttpServlet {
             req.getRequestDispatcher("/comm/error.jsp").forward(req, resp);
         } else {
             try {
+                System.out.println(house);
                 boolean flag = houseManage.saveHouse(house);
                 if (flag) {
                     req.getRequestDispatcher("house_list.jsp").forward(req, resp);

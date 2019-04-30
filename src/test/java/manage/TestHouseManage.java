@@ -23,17 +23,17 @@ public class TestHouseManage {
     public void testSaveHouse() {
         System.out.println("测试saveHouse(House house)方法");
         House house = new House();
-        house.setUserName("赵六f");
+        house.setUserName("王麻");
         house.setIdentity("121131231");
-        house.setPhone("2133");
+        house.setPhone("13409102102");
         house.setHouseType("一室八厅");
         house.setGmtBuy("2019-01-01");
         house.setArea(30);
         house.setBuilding("8栋");
-        house.setUnit("一单元");
+        house.setUnit("二单元");
         house.setHouseNum("909");
-        house.setLocation("1车位");
-        house.setLicenseplatenumber("苏A 12345");
+        house.setLocation("8车位");
+        house.setLicenseplatenumber("苏C 12345");
         try {
             boolean flag = houseManage.saveHouse(house);
             assertTrue(flag);

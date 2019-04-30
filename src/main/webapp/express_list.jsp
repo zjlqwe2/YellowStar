@@ -2,7 +2,7 @@
 <%@ page import="manage.ExpressManage" %>
 <%@ page import="entity.Express" %>
 <%@ page import="exception.ExpressException" %>
-<%@ page import="manage.impl.ExpressManageTestImpl" %>
+<%@ page import="manage.impl.ExpressManageImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
@@ -14,7 +14,7 @@
         request.setAttribute("detail","仅物业管理员可查看");
         request.getRequestDispatcher("/comm/error.jsp").forward(request,response);
     } else {
-        ExpressManage expressManage = new ExpressManageTestImpl();
+        ExpressManage expressManage = new ExpressManageImpl();
         List<Express> lists = null;
         try {
             lists = expressManage.listNotTakeExpress();

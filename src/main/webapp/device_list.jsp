@@ -8,7 +8,7 @@
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-
+    String[] is_service_str = {"维修","尚未修理"};
     int userType = (int)session.getAttribute("usertype");
     if(userType != 2) {
         request.setAttribute("title","权限不足");

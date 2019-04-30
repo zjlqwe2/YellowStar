@@ -23,6 +23,7 @@ public class DoUpdateHouse extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int usertype = (int)req.getSession().getAttribute("usertype");
         int hid = Integer.parseInt(req.getParameter("hid")) ;
+        String username = req.getParameter("user_name");
         String identity = req.getParameter("identity");
         String phone = req.getParameter("phone");
         String house_type = req.getParameter("house_type");
@@ -42,6 +43,8 @@ public class DoUpdateHouse extends HttpServlet {
         String licenseplatenumber = req.getParameter("licenseplatenumber");
 
         House house = new House();
+        house.setHouseType(house_type);
+        house.setUserName(username);
         house.setHid(hid);
         house.setIdentity(identity);
         house.setPhone(phone);

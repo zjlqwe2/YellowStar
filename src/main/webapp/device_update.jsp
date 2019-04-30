@@ -32,6 +32,7 @@
     <div class="panel-heading text-center">添加小区设备信息</div>
     <div class="panel-body">
         <form action="docreatedevice" method="POST">
+            <input type="hidden" value="<%=device.getDevice_type()%>" name="did">
             <div class="form-group">
                 <label >设备名称</label>
                 <input type="text" class="form-control" name="device_name" value="<%=device.getDevice_name()%>">
@@ -60,7 +61,7 @@
 
             <div class="form-group">
                 <label >处理人</label>
-                <input type="text" class="form-control" name="uid" value="<%=device.getUid()%>">
+                <input type="text" class="form-control" name="handlers" value="<%=device.getHandlers()%>">
             </div>
             <br>
 
