@@ -23,6 +23,7 @@ public class DoDeleteHouse extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int usertype = (int)req.getSession().getAttribute("usertype");
         int hid = 0;
+        String operator = (String) (req.getSession().getAttribute("loginname"));
         hid = Integer.parseInt(req.getParameter("hid")) ;
         if (hid < 1){
             req.setAttribute("title", "参数异常");
@@ -36,7 +37,7 @@ public class DoDeleteHouse extends HttpServlet {
             req.getRequestDispatcher("/comm/error.jsp").forward(req, resp);
         } else {
             try {
-                boolean flag = houseManage.delHouse(hid);
+                boolean flag = houseManage.delHouse(hid,operator);
                 if (flag) {
                     req.getRequestDispatcher("house_list.jsp").forward(req, resp);
                 } else {

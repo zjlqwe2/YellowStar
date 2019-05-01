@@ -15,7 +15,7 @@ public interface HouseManage {
      * @return
      * @throws HouseException
      */
-    boolean saveHouse (House house) throws HouseException ;
+    boolean saveHouse (House house,String operator) throws HouseException ;
 
     /**
      * 删除房产信息
@@ -23,7 +23,7 @@ public interface HouseManage {
      * @return
      * @throws HouseException
      */
-    boolean delHouse (int hid) throws HouseException ;
+    boolean delHouse (int hid, String operator) throws HouseException ;
 
     /**
      * 修改房产信息
@@ -31,7 +31,7 @@ public interface HouseManage {
      * @return
      * @throws HouseException
      */
-    boolean updateHouse (House house) throws HouseException ;
+    boolean updateHouse (House house, String operator) throws HouseException ;
 
     /**
      * 列出房产信息

@@ -21,6 +21,7 @@ public class DoCreateHouse extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int usertype = (int)req.getSession().getAttribute("usertype");
+        String operator = (String) (req.getSession().getAttribute("loginname"));
         String user_name = req.getParameter("user_name");
         String identity = req.getParameter("identity");
         String phone = req.getParameter("phone");
@@ -64,7 +65,7 @@ public class DoCreateHouse extends HttpServlet {
         } else {
             try {
                 System.out.println(house);
-                boolean flag = houseManage.saveHouse(house);
+                boolean flag = houseManage.saveHouse(house, operator);
                 if (flag) {
                     req.getRequestDispatcher("house_list.jsp").forward(req, resp);
                 } else {

@@ -31,6 +31,7 @@ public class DoUpdateHouse extends HttpServlet {
         String building = req.getParameter("building");
         String unit = req.getParameter("unit");
         String house_num = req.getParameter("house_num");
+        String operator = (String) (req.getSession().getAttribute("loginname"));
 
         if ("".equals(identity) || "".equals(phone) || "".equals(house_type) || "".equals(gmt_buy) || "".equals(building) || "".equals(unit) || "".equals(house_num)) {
             req.setAttribute("title", "信息不全");
@@ -69,7 +70,7 @@ public class DoUpdateHouse extends HttpServlet {
             req.getRequestDispatcher("/comm/error.jsp").forward(req, resp);
         } else {
             try {
-                boolean flag = houseManage.updateHouse(house);
+                boolean flag = houseManage.updateHouse(house,operator);
                 if (flag) {
                     req.getRequestDispatcher("house_list.jsp").forward(req, resp);
                 } else {

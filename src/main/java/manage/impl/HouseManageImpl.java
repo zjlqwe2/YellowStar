@@ -3,20 +3,21 @@ package manage.impl;
 import dao.HouseDao;
 import dao.impl.HouseDaoImpl;
 import entity.House;
+import entity.Log;
 import exception.HouseException;
+import exception.LogException;
 import manage.HouseManage;
+import manage.LogManage;
 import java.sql.SQLException;
 import java.util.List;
 
 /**
- * @author: 我的袜子都是洞
  * @description:
- * @path: PropertyManagement-manage.impl-HouseManageImpl
- * @date: 2019-04-29 23:09
  */
 public class HouseManageImpl implements HouseManage {
 
     private HouseDao houseDao = new HouseDaoImpl();
+    private LogManage logManage = new LogManageImpl();
 
     /**
      * 添加房产信息
@@ -26,7 +27,7 @@ public class HouseManageImpl implements HouseManage {
      * @throws HouseException
      */
     @Override
-    public boolean saveHouse(House house) throws HouseException {
+    public boolean saveHouse(House house, String operator) throws HouseException {
         String user_name = house.getUserName();
         String identity = house.getIdentity();
         String phone = house.getPhone();
@@ -37,6 +38,11 @@ public class HouseManageImpl implements HouseManage {
         String unit = house.getUnit();
         String brand = house.getBrand();
         String house_num = house.getHouseNum();
+
+        Log log = new Log();
+        log.setOperation("添加业主["+user_name+"]信息");
+        log.setOperator(operator);
+
         if ("".equals(user_name) ||
                 "".equals(identity) ||
                 "".equals(phone) ||
@@ -52,12 +58,15 @@ public class HouseManageImpl implements HouseManage {
         }
         try {
             boolean flag = houseDao.saveHouse(house);
-            if (flag) {
+            boolean flag2 = logManage.saveLog(log);
+            if (flag && flag2) {
                 return true;
             } else {
                 return false;
             }
         } catch (SQLException e) {
+            throw new HouseException(e.getMessage());
+        } catch (LogException e) {
             throw new HouseException(e.getMessage());
         }
     }
@@ -70,18 +79,28 @@ public class HouseManageImpl implements HouseManage {
      * @throws HouseException
      */
     @Override
-    public boolean delHouse(int hid) throws HouseException {
+    public boolean delHouse(int hid, String operator) throws HouseException {
         if (hid < 1) {
             return false;
         }
+        House house = getHouse(hid);
+
+        Log log = new Log();
+        log.setOperation("删除业主["+house.getUserName()+"]信息");
+        log.setOperator(operator);
+
         try {
             boolean flag = houseDao.delHouse(hid);
-            if (flag) {
+            boolean flag2 = logManage.saveLog(log);
+            if (flag && flag2) {
                 return true;
             } else {
                 return false;
             }
+
         } catch (SQLException e) {
+            throw new HouseException(e.getMessage());
+        } catch (LogException e) {
             throw new HouseException(e.getMessage());
         }
     }
@@ -94,7 +113,7 @@ public class HouseManageImpl implements HouseManage {
      * @throws HouseException
      */
     @Override
-    public boolean updateHouse(House house) throws HouseException {
+    public boolean updateHouse(House house, String operator) throws HouseException {
         int hid = house.getHid();
         String user_name = house.getUserName();
         String identity = house.getIdentity();
@@ -118,14 +137,22 @@ public class HouseManageImpl implements HouseManage {
         ) {
             return false;
         }
+
+        Log log = new Log();
+        log.setOperation("更新业主["+user_name+"]信息");
+        log.setOperator(operator);
+
         try {
             boolean flag = houseDao.updateHouse(house);
-            if (flag) {
+            boolean flag2 = logManage.saveLog(log);
+            if (flag && flag2) {
                 return true;
             } else {
                 return false;
             }
         } catch (SQLException e) {
+            throw new HouseException(e.getMessage());
+        } catch (LogException e) {
             throw new HouseException(e.getMessage());
         }
     }

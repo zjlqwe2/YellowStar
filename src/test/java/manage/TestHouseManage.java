@@ -35,7 +35,7 @@ public class TestHouseManage {
         house.setLocation("8车位");
         house.setLicenseplatenumber("苏C 12345");
         try {
-            boolean flag = houseManage.saveHouse(house);
+            boolean flag = houseManage.saveHouse(house,"admin");
             assertTrue(flag);
         } catch (HouseException e) {
             e.printStackTrace();
@@ -59,7 +59,7 @@ public class TestHouseManage {
         house.setLocation("1车位");
         house.setLicenseplatenumber("苏A 88888");
         try {
-            boolean flag = houseManage.updateHouse(house);
+            boolean flag = houseManage.updateHouse(house,"admin");
             assertTrue(flag);
         } catch (HouseException e) {
             e.printStackTrace();
@@ -94,7 +94,7 @@ public class TestHouseManage {
     public void testDelHouse() {
         System.out.println("测试delHouse(int hid)方法");
         try {
-            boolean flag = houseManage.delHouse(4);
+            boolean flag = houseManage.delHouse(4,"admin");
             assertTrue(flag);
         } catch (HouseException e) {
             e.printStackTrace();
