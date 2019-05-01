@@ -9,10 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author: 我的袜子都是洞
- * @description:
- * @path: PropertyManagement-dao.impl-DeviceDaoImpl
- * @date: 2019-04-29 23:16
+ * @description: 设备Dao层
  */
 public class DeviceDaoImpl implements DeviceDao {
     /**

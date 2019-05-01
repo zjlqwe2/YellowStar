@@ -9,10 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author: 我的袜子都是洞
- * @description:
- * @path: PropertyManagement-dao.impl-HouseDaoImpl
- * @date: 2019-04-29 23:10
+ * @description: 房产信息Dao层
  */
 public class HouseDaoImpl implements HouseDao {
     /**

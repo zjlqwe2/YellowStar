@@ -9,10 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author: 我的袜子都是洞
- * @description:
- * @path: PropertyManagement-dao.impl-CostDaoImpl
- * @date: 2019-04-29 23:18
+ * @description: 费用Dao层
  */
 public class CostDaoImpl implements CostDao {
     /**

@@ -5,7 +5,6 @@ import util.RowMapperObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
 public class CostMapperImpl implements RowMapperObject {
 
     @Override
