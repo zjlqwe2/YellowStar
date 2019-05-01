@@ -12,7 +12,7 @@
 <jsp:include page="comm/header.jsp" />
 <jsp:include page="comm/nav.jsp" />
 
-<h1>欢迎用户：<%=loginname%></h1>
-<p>这是账户登陆后的个人主页，不同用户对应不同的信息</p>
+<h1><%=loginname%></h1>
+<p>欢迎使用Yellow Star物业管理系统</p>
 
 <jsp:include page="comm/footer.jsp" />

@@ -35,6 +35,10 @@
             </li>
 
             <li>
+                <a href="<%=basePath%>log_list.jsp">查看日志</a>
+            </li>
+
+            <li>
                 <a href="<%=basePath%>about.jsp">关于我们</a>
             </li>
 
