@@ -28,7 +28,7 @@ public class TestDeviceManage {
         device.setHandlers("物业1");
         System.out.println(device);
         try {
-            boolean flag = deviceManage.saveDevice(device);
+            boolean flag = deviceManage.saveDevice(device, "admin");
             assertTrue(flag);
         } catch (DeviceException e) {
             e.printStackTrace();
@@ -46,7 +46,7 @@ public class TestDeviceManage {
         device.setProcessing_opinion("干巴爹");
         device.setHandlers("物业的人");
         try {
-            boolean flag = deviceManage.updateDevice(device);
+            boolean flag = deviceManage.updateDevice(device, "admin");
             assertTrue(flag);
         } catch (DeviceException e) {
             e.printStackTrace();
@@ -79,7 +79,7 @@ public class TestDeviceManage {
     public void testDeleteDevice() {
         System.out.println("测试deleteDevice(int did)方法");
         try {
-            boolean flag = deviceManage.deleteDevice(4);
+            boolean flag = deviceManage.deleteDevice(4, "admin");
             assertTrue(flag);
         } catch (DeviceException e) {
             e.printStackTrace();

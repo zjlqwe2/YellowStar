@@ -21,6 +21,7 @@ public class DoDeleteDevice extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int usertype = (int)req.getSession().getAttribute("usertype");
+        String operator = (String) (req.getSession().getAttribute("loginname"));
         int did = 0;
         did = Integer.parseInt(req.getParameter("did")) ;
         if (did < 1){
@@ -35,7 +36,7 @@ public class DoDeleteDevice extends HttpServlet {
             req.getRequestDispatcher("/comm/error.jsp").forward(req, resp);
         } else {
             try {
-                boolean flag = deviceManage.deleteDevice(did);
+                boolean flag = deviceManage.deleteDevice(did, operator);
                 if (flag) {
                     req.getRequestDispatcher("device_list.jsp").forward(req, resp);
                 } else {

@@ -23,7 +23,7 @@ public interface DeviceManage {
      * @return
      * @throws DeviceException
      */
-    public boolean saveDevice(Device device) throws DeviceException;
+    public boolean saveDevice(Device device, String operator) throws DeviceException;
 
     /**
      * 删除某设备信息
@@ -31,7 +31,7 @@ public interface DeviceManage {
      * @return
      * @throws DeviceException
      */
-    public boolean deleteDevice(int did) throws DeviceException;
+    public boolean deleteDevice(int did, String operator) throws DeviceException;
 
     /**
      * 修改某设备信息
@@ -39,7 +39,7 @@ public interface DeviceManage {
      * @return
      * @throws DeviceException
      */
-    public boolean updateDevice(Device device) throws DeviceException;
+    public boolean updateDevice(Device device, String operator) throws DeviceException;
 
     /**
      * 列出设备信息

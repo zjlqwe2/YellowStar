@@ -3,8 +3,11 @@ package manage.impl;
 import dao.DeviceDao;
 import dao.impl.DeviceDaoImpl;
 import entity.Device;
+import entity.Log;
 import exception.DeviceException;
+import exception.LogException;
 import manage.DeviceManage;
+import manage.LogManage;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -17,6 +20,7 @@ import java.util.List;
 public class DeviceManageImpl implements DeviceManage {
 
     private DeviceDao deviceDao = new DeviceDaoImpl();
+    private LogManage logManage = new LogManageImpl();
 
     /**
      * 根据did获取某设备信息
@@ -46,7 +50,7 @@ public class DeviceManageImpl implements DeviceManage {
      * @throws DeviceException
      */
     @Override
-    public boolean saveDevice(Device device) throws DeviceException {
+    public boolean saveDevice(Device device, String operator) throws DeviceException {
         String device_name = device.getDevice_name();
         String device_type = device.getDevice_type();
         String processing_opinion = device.getProcessing_opinion();
@@ -58,14 +62,20 @@ public class DeviceManageImpl implements DeviceManage {
         ) {
             return false;
         }
+        Log log = new Log();
+        log.setOperation("创建设备["+device_name+"]信息");
+        log.setOperator(operator);
         try {
             boolean flag = deviceDao.saveDevice(device);
-            if (flag) {
+            boolean flag2 = logManage.saveLog(log);
+            if (flag && flag2) {
                 return true;
             } else {
                 return false;
             }
         } catch (SQLException e) {
+            throw new DeviceException(e.getMessage());
+        } catch (LogException e) {
             throw new DeviceException(e.getMessage());
         }
     }
@@ -78,18 +88,25 @@ public class DeviceManageImpl implements DeviceManage {
      * @throws DeviceException
      */
     @Override
-    public boolean deleteDevice(int did) throws DeviceException {
+    public boolean deleteDevice(int did, String operator) throws DeviceException {
         if (did < 1) {
             return false;
         }
+        Device device = getDevice(did);
+        Log log = new Log();
+        log.setOperation("删除设备["+device.getDevice_name()+"]信息");
+        log.setOperator(operator);
         try {
             boolean flag = deviceDao.deleteDevice(did);
-            if (flag) {
+            boolean flag2 = logManage.saveLog(log);
+            if (flag && flag2) {
                 return true;
             } else {
                 return false;
             }
         } catch (SQLException e) {
+            throw new DeviceException(e.getMessage());
+        } catch (LogException e) {
             throw new DeviceException(e.getMessage());
         }
     }
@@ -102,7 +119,7 @@ public class DeviceManageImpl implements DeviceManage {
      * @throws DeviceException
      */
     @Override
-    public boolean updateDevice(Device device) throws DeviceException {
+    public boolean updateDevice(Device device, String operator) throws DeviceException {
         String device_name = device.getDevice_name();
         String device_type = device.getDevice_type();
         String processing_opinion = device.getProcessing_opinion();
@@ -113,14 +130,20 @@ public class DeviceManageImpl implements DeviceManage {
         ) {
             return false;
         }
+        Log log = new Log();
+        log.setOperation("修改设备["+device_name+"]信息");
+        log.setOperator(operator);
         try {
             boolean flag = deviceDao.updateDevice(device);
-            if (flag) {
+            boolean flag2 = logManage.saveLog(log);
+            if (flag && flag2) {
                 return true;
             } else {
                 return false;
             }
         } catch (SQLException e) {
+            throw new DeviceException(e.getMessage());
+        } catch (LogException e) {
             throw new DeviceException(e.getMessage());
         }
     }

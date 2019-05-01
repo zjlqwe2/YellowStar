@@ -21,6 +21,7 @@ public class DoCreateDevice extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int usertype = (int)req.getSession().getAttribute("usertype");
+        String operator = (String) (req.getSession().getAttribute("loginname"));
         String device_name = "";
         String device_type = "";
         String processing_opinion = "";
@@ -58,7 +59,7 @@ public class DoCreateDevice extends HttpServlet {
             req.getRequestDispatcher("/comm/error.jsp").forward(req, resp);
         } else {
             try {
-                boolean flag = deviceManage.saveDevice(device);
+                boolean flag = deviceManage.saveDevice(device, operator);
                 if (flag) {
                     req.getRequestDispatcher("device_list.jsp").forward(req, resp);
                 } else {

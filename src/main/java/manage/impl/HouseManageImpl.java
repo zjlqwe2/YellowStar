@@ -139,7 +139,7 @@ public class HouseManageImpl implements HouseManage {
         }
 
         Log log = new Log();
-        log.setOperation("更新业主["+user_name+"]信息");
+        log.setOperation("修改业主["+user_name+"]信息");
         log.setOperator(operator);
 
         try {
