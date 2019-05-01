@@ -62,8 +62,8 @@ CREATE TABLE IF NOT EXISTS cost (
 CREATE TABLE IF NOT EXISTS express (
     eid INT UNSIGNED NOT NULL AUTO_INCREMENT KEY COMMENT '编号',
     express_name varchar (20) NOT NULL COMMENT '快递名称',
-    username varchar (10) NOT NULL COMMENT '姓名',
-    phone varchar (11) NOT NULL COMMENT '手机号码',
+    username varchar (20) NOT NULL COMMENT '姓名',
+    phone varchar (20) NOT NULL COMMENT '手机号码',
     express_id varchar(50) NOT NULL COMMENT '快递单号',    
     is_take TINYINT UNSIGNED DEFAULT 0 COMMENT '是否领取',
     gmt_create DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL COMMENT '创建时间'
@@ -93,8 +93,8 @@ CREATE TABLE IF NOT EXISTS device (
 ```sql
 CREATE TABLE IF NOT EXISTS syslog (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT KEY COMMENT 'id主键',
-    operator VARCHAR(20) NOT NULL comment '操作人',
-    operation VARCHAR(20) NOT NULL comment '操作行为',
+    operator VARCHAR(50) NOT NULL comment '操作人',
+    operation VARCHAR(50) NOT NULL comment '操作行为',
     gmt_create DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL COMMENT '操作时间'
 );
 ```

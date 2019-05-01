@@ -3,20 +3,21 @@ package manage.impl;
 import dao.ExpressDao;
 import dao.impl.ExpressDaoImpl;
 import entity.Express;
+import entity.Log;
 import exception.ExpressException;
+import exception.LogException;
 import manage.ExpressManage;
+import manage.LogManage;
 import java.sql.SQLException;
 import java.util.List;
 
 /**
- * @author: 我的袜子都是洞
  * @description:
- * @path: PropertyManagement-manage.impl-ExpressManageImpl
- * @date: 2019-04-30 01:17
  */
 public class ExpressManageImpl implements ExpressManage {
 
     private ExpressDao expressDao = new ExpressDaoImpl();
+    private LogManage logManage = new LogManageImpl();
 
     /**
      * 添加快递
@@ -26,7 +27,7 @@ public class ExpressManageImpl implements ExpressManage {
      * @throws ExpressException
      */
     @Override
-    public boolean saveExpress(Express express) throws ExpressException {
+    public boolean saveExpress(Express express, String operator) throws ExpressException {
         String express_name = express.getExpress_name();
         String username = express.getUsername();
         String phone = express.getPhone();
@@ -34,14 +35,21 @@ public class ExpressManageImpl implements ExpressManage {
         if ("".equals(express_name) || "".equals(username) || "".equals(phone) || "".equals(express_id)){
             return false;
         }
+        Log log = new Log();
+        log.setOperation("添加["+username+"]快递信息");
+        log.setOperator(operator);
+
         try {
             boolean flag = expressDao.saveExpress(express);
-            if (flag) {
+            boolean flag2 = logManage.saveLog(log);
+            if (flag && flag2) {
                 return true;
             } else {
                 return false;
             }
         } catch (SQLException e) {
+            throw new ExpressException(e.getMessage());
+        } catch (LogException e) {
             throw new ExpressException(e.getMessage());
         }
     }

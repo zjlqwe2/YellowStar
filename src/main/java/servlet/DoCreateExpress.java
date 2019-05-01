@@ -22,6 +22,7 @@ public class DoCreateExpress extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int usertype = (int)req.getSession().getAttribute("usertype");
+        String operator = (String) (req.getSession().getAttribute("loginname"));
         if (usertype != 2) {
             req.setAttribute("title", "权限不足");
             req.setAttribute("detail", "仅物业管理员可操作");
@@ -48,7 +49,7 @@ public class DoCreateExpress extends HttpServlet {
         express.setExpress_id(express_id);
 
         try {
-            boolean flag = expressManage.saveExpress(express);
+            boolean flag = expressManage.saveExpress(express, operator);
             if (flag) {
                 req.getRequestDispatcher("express_list.jsp").forward(req, resp);
             } else {

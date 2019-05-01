@@ -25,7 +25,7 @@ public class TestExpressManage {
         express.setPhone("24121231231");
         express.setExpress_id("1231231313");
         try {
-            boolean flag = expressManage.saveExpress(express);
+            boolean flag = expressManage.saveExpress(express,"admin");
             assertTrue(flag);
         } catch (ExpressException e) {
             e.printStackTrace();

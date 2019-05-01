@@ -15,7 +15,7 @@ public interface ExpressManage {
      * @return
      * @throws ExpressException
      */
-    public boolean saveExpress(Express express) throws ExpressException;
+    public boolean saveExpress(Express express, String operator) throws ExpressException;
 
     /**
      * 领取快递
