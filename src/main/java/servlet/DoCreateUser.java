@@ -21,6 +21,7 @@ public class DoCreateUser extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String loginname = req.getParameter("loginname");
         String password = req.getParameter("password");
+        String operator = (String) (req.getSession().getAttribute("loginname"));
         int usertype = Integer.parseInt(req.getParameter("usertype"));
 
         if ("".equals(loginname) || "".equals(password) || usertype==0) {
@@ -30,7 +31,7 @@ public class DoCreateUser extends HttpServlet {
             req.getRequestDispatcher("/comm/error.jsp").forward(req, resp);
         } else {
             try {
-                boolean flag = userManage.saveUser(loginname, password, usertype);
+                boolean flag = userManage.saveUser(loginname, password, usertype, operator);
                 if (flag) {
                     req.getRequestDispatcher("user_list.jsp").forward(req, resp);
                 }

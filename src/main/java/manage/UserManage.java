@@ -41,7 +41,7 @@ public interface UserManage {
      * @return
      * @throws UserException
      */
-    boolean saveUser(String loginname, String password, int usertype) throws UserException;
+    boolean saveUser(String loginname, String password, int usertype, String operator) throws UserException;
 
     /**
      * 删除某用户
@@ -49,5 +49,5 @@ public interface UserManage {
      * @return
      * @throws UserException
      */
-    boolean deleteUser(int uid) throws UserException;
+    boolean deleteUser(int uid, String operator) throws UserException;
 }

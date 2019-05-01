@@ -21,6 +21,7 @@ public class DoDeleteUser extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int usertype = (int)req.getSession().getAttribute("usertype");
         int uid = 0;
+        String operator = (String) req.getSession().getAttribute("loginname");
         uid = Integer.parseInt(req.getParameter("uid")) ;
         if (uid < 1){
             req.setAttribute("title", "参数异常");
@@ -33,7 +34,7 @@ public class DoDeleteUser extends HttpServlet {
             req.getRequestDispatcher("/comm/error.jsp").forward(req, resp);
         } else {
             try {
-                boolean flag = userManage.deleteUser(uid);
+                boolean flag = userManage.deleteUser(uid, operator);
                 if (flag) {
                     req.getRequestDispatcher("user_list.jsp").forward(req, resp);
                 }

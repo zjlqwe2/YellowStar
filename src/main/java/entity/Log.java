@@ -5,7 +5,7 @@ package entity;
  */
 public class Log {
     private int id;
-    private int uid;
+    private String operator;
     private String operation;
     private String gmt_create;
 
@@ -13,7 +13,7 @@ public class Log {
     public String toString() {
         return "Log{" +
                 "id=" + id +
-                ", uid=" + uid +
+                ", operator='" + operator + '\'' +
                 ", operation='" + operation + '\'' +
                 ", gmt_create='" + gmt_create + '\'' +
                 '}';
@@ -27,12 +27,12 @@ public class Log {
         this.id = id;
     }
 
-    public int getUid() {
-        return uid;
+    public String getOperator() {
+        return operator;
     }
 
-    public void setUid(int uid) {
-        this.uid = uid;
+    public void setOperator(String operator) {
+        this.operator = operator;
     }
 
     public String getOperation() {

@@ -2,21 +2,22 @@ package manage.impl;
 
 import dao.UserDao;
 import dao.impl.UserDaoImpl;
+import entity.Log;
 import entity.User;
+import exception.LogException;
 import exception.UserException;
+import manage.LogManage;
 import manage.UserManage;
 import java.sql.SQLException;
 import java.util.List;
 
 /**
- * @author: 我的袜子都是洞
- * @description:
- * @path: PropertyManagement-manage.impl-UserManageImpl
- * @date: 2019-04-29 19:36
+ * @description: UserMange层
  */
 public class UserManageImpl implements UserManage {
 
     private UserDao userDao = new UserDaoImpl();
+    private LogManage logManage = new LogManageImpl();
 
     /**
      * 用户登录验证
@@ -96,7 +97,7 @@ public class UserManageImpl implements UserManage {
      * @throws UserException
      */
     @Override
-    public boolean saveUser(String loginname, String password, int usertype) throws UserException {
+    public boolean saveUser(String loginname, String password, int usertype, String operator) throws UserException {
         if ("".equals(loginname) || "".equals(password) || usertype<1) {
             return false;
         }
@@ -104,14 +105,21 @@ public class UserManageImpl implements UserManage {
         user.setLoginName(loginname);
         user.setPassWord(password);
         user.setUserType(usertype);
+
+        Log log = new Log();
+        log.setOperation("创建用户["+loginname+"]");
+        log.setOperator(operator);
         try {
             boolean flag = userDao.saveUser(user);
-            if (flag) {
+            boolean flag2 = logManage.saveLog(log);
+            if (flag && flag2) {
                 return true;
             } else {
                 return false;
             }
         } catch (SQLException e) {
+            throw new UserException(e.getMessage());
+        } catch (LogException e) {
             throw new UserException(e.getMessage());
         }
     }
@@ -124,18 +132,26 @@ public class UserManageImpl implements UserManage {
      * @throws UserException
      */
     @Override
-    public boolean deleteUser(int uid) throws UserException {
+    public boolean deleteUser(int uid, String operator) throws UserException {
         if (uid < 1) {
             return false;
         }
+        User user = getUser(uid);
+        String loginname = user.getLoginName();
+        Log log = new Log();
+        log.setOperation("删除用户["+loginname+"]");
+        log.setOperator(operator);
         try {
             boolean flag = userDao.deleteUser(uid);
-            if (flag) {
+            boolean flag2 = logManage.saveLog(log);
+            if (flag && flag2) {
                 return true;
             } else {
                 return false;
             }
         } catch (SQLException e) {
+            throw new UserException(e.getMessage());
+        }catch (LogException e) {
             throw new UserException(e.getMessage());
         }
     }

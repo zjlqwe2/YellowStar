@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS device (
 ```sql
 CREATE TABLE IF NOT EXISTS syslog (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT KEY COMMENT 'id主键',
-    uid INT UNSIGNED NOT NULL COMMENT 'uid',
+    operator VARCHAR(20) NOT NULL comment '操作人',
     operation VARCHAR(20) NOT NULL comment '操作行为',
     gmt_create DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL COMMENT '操作时间'
 );

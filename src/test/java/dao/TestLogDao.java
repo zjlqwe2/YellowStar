@@ -22,7 +22,7 @@ public class TestLogDao {
     public void testsaveLog() {
         System.out.println("测试saveLog(Log log)方法");
         Log log = new Log();
-        log.setUid(1);
+        log.setOperator("admin");
         log.setOperation("创建用户");
         try {
             boolean flag = logDao.saveLog(log);

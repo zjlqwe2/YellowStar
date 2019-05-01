@@ -17,9 +17,9 @@ public class LogManageImpl implements LogManage {
 
     @Override
     public boolean saveLog(Log log) throws LogException {
-        int uid = log.getUid();
+        String operator = log.getOperator();
         String operation = log.getOperation();
-        if (uid<1 || "".equals(operation)) {
+        if ("".equals(operator) || "".equals(operation)) {
             return false;
         }
         try {

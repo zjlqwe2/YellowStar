@@ -62,7 +62,7 @@ public class TestUserManage {
     public void testSaveUser() {
         System.out.println("测试saveUser(String loginname, String password, int usertype)方法");
         try {
-            boolean flag = userManage.saveUser("user2","password1",1);
+            boolean flag = userManage.saveUser("user2","password1",1,"admin");
             assertTrue(flag);
         } catch (UserException e) {
             e.printStackTrace();
@@ -73,7 +73,7 @@ public class TestUserManage {
     public void testDeleteUser() {
         System.out.println("测试deleteUser(int uid)方法");
         try {
-            boolean flag = userManage.deleteUser(4);
+            boolean flag = userManage.deleteUser(4,"admin");
             assertTrue(flag);
         } catch (UserException e) {
             e.printStackTrace();

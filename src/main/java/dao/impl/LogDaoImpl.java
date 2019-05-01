@@ -15,13 +15,13 @@ public class LogDaoImpl implements LogDao {
 
     @Override
     public boolean saveLog(Log log) throws SQLException {
-        int uid = log.getUid();
+        String operator = log.getOperator();
         String operation = log.getOperation();
-        if (uid<1 || "".equals(operation)) {
+        if ("".equals(operator) || "".equals(operation)) {
             return false;
         }
-        String sql = "INSERT INTO syslog (uid, operation) VALUES (?,?)";
-        int i = DBHelp.executeUpdate(sql, uid, operation);
+        String sql = "INSERT INTO syslog (operator, operation) VALUES (?,?)";
+        int i = DBHelp.executeUpdate(sql, operator, operation);
         if (i == 0) {
             return false;
         } else {
