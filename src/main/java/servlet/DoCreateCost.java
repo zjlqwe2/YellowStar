@@ -22,6 +22,7 @@ public class DoCreateCost extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int usertype = (int)req.getSession().getAttribute("usertype");
+        String operator = (String) (req.getSession().getAttribute("loginname"));
         if (usertype != 2) {
             req.setAttribute("title", "权限不足");
             req.setAttribute("detail", "仅物业管理员可操作");
@@ -42,7 +43,7 @@ public class DoCreateCost extends HttpServlet {
         cost.setCostType(cost_type);
         cost.setPrice(price);
         try {
-            boolean flag = costManage.saveCost(cost);
+            boolean flag = costManage.saveCost(cost,operator);
             if (flag) {
                 req.getRequestDispatcher("cost_list.jsp?cost_type="+cost_type).forward(req, resp);
             } else {

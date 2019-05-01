@@ -25,7 +25,7 @@ public class TestCostManage {
         cost.setHid(1);
         cost.setPrice(30);
         try {
-            boolean flag = costManage.saveCost(cost);
+            boolean flag = costManage.saveCost(cost,"admin");
             assertTrue(flag);
         } catch (CostException e) {
             e.printStackTrace();
@@ -41,7 +41,7 @@ public class TestCostManage {
         cost.setHid(1);
         cost.setPrice(30);
         try {
-            boolean flag = costManage.updateCost(cost);
+            boolean flag = costManage.updateCost(cost,"admin");
             assertTrue(flag);
         } catch (CostException e) {
             e.printStackTrace();
@@ -63,7 +63,7 @@ public class TestCostManage {
     public void testDeleteCost() {
         System.out.println("测试deleteCost(int id)方法");
         try {
-            boolean flag = costManage.deleteCost(4);
+            boolean flag = costManage.deleteCost(4,"admin");
             assertTrue(flag);
         } catch (CostException e) {
             e.printStackTrace();

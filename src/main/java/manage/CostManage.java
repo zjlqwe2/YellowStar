@@ -15,7 +15,7 @@ public interface CostManage {
      * @return
      * @throws CostException
      */
-    boolean saveCost(Cost cost) throws CostException;
+    boolean saveCost(Cost cost, String operator) throws CostException;
 
     /**
      * 列出某类型费用
@@ -31,7 +31,7 @@ public interface CostManage {
      * @return
      * @throws CostException
      */
-    boolean updateCost(Cost cost) throws CostException;
+    boolean updateCost(Cost cost, String operator) throws CostException;
 
     /**
      * 删除某条费用记录
@@ -39,5 +39,5 @@ public interface CostManage {
      * @return
      * @throws CostException
      */
-    boolean deleteCost(int id) throws CostException;
+    boolean deleteCost(int id, String operator) throws CostException;
 }

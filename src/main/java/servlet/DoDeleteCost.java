@@ -23,6 +23,7 @@ public class DoDeleteCost extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int usertype = (int)req.getSession().getAttribute("usertype");
+        String operator = (String) (req.getSession().getAttribute("loginname"));
         int id = 0;
         id = Integer.parseInt(req.getParameter("id")) ;
         int costtype = Integer.parseInt(req.getParameter("cost_type")) ;
@@ -38,7 +39,7 @@ public class DoDeleteCost extends HttpServlet {
             req.getRequestDispatcher("/comm/error.jsp").forward(req, resp);
         } else {
             try {
-                boolean flag = costManage.deleteCost(id);
+                boolean flag = costManage.deleteCost(id,operator);
                 if (flag) {
                     req.getRequestDispatcher("cost_list.jsp?cost_type="+costtype).forward(req, resp);
                 } else {

@@ -6,8 +6,11 @@ import dao.impl.CostDaoImpl;
 import dao.impl.HouseDaoImpl;
 import entity.Cost;
 import entity.House;
+import entity.Log;
 import exception.CostException;
+import exception.LogException;
 import manage.CostManage;
+import manage.LogManage;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +26,7 @@ public class CostManageImpl implements CostManage {
 
     private CostDao costDao = new CostDaoImpl();
     private HouseDao houseDao = new HouseDaoImpl();
+    private LogManage logManage = new LogManageImpl();
 
     /**
      * 添加费用
@@ -32,21 +36,28 @@ public class CostManageImpl implements CostManage {
      * @throws CostException
      */
     @Override
-    public boolean saveCost(Cost cost) throws CostException {
+    public boolean saveCost(Cost cost, String operator) throws CostException {
         int hid = cost.getHid();
         int cost_type = cost.getCostType();
         double price = cost.getPrice();
         if (hid<1 || cost_type<1 || price<0) {
             return false;
         }
+        Log log = new Log();
+        log.setOperator(operator);
         try {
+            House house = houseDao.getHouse(cost.getHid());
+            log.setOperation("添加业主["+house.getUserName()+"]费用信息");
             boolean flag = costDao.saveCost(cost);
-            if (flag) {
+            boolean flag2 = logManage.saveLog(log);
+            if (flag && flag2) {
                 return true;
             } else {
                 return false;
             }
         } catch (SQLException e) {
+            throw new CostException(e.getMessage());
+        } catch (LogException e) {
             throw new CostException(e.getMessage());
         }
     }
@@ -89,20 +100,27 @@ public class CostManageImpl implements CostManage {
      * @throws CostException
      */
     @Override
-    public boolean updateCost(Cost cost) throws CostException {
+    public boolean updateCost(Cost cost, String operator) throws CostException {
         int id = cost.getId();
         double price = cost.getPrice();
         if (id<1 || price<0) {
             return false;
         }
+        Log log = new Log();
+        log.setOperator(operator);
         try {
+            House house = houseDao.getHouse(cost.getHid());
+            log.setOperation("修改业主["+house.getUserName()+"]费用信息");
             boolean flag = costDao.updateCost(cost);
-            if (flag) {
+            boolean flag2 = logManage.saveLog(log);
+            if (flag && flag2) {
                 return true;
             } else {
                 return false;
             }
         } catch (SQLException e) {
+            throw new CostException(e.getMessage());
+        } catch (LogException e) {
             throw new CostException(e.getMessage());
         }
     }
@@ -115,18 +133,24 @@ public class CostManageImpl implements CostManage {
      * @throws CostException
      */
     @Override
-    public boolean deleteCost(int id) throws CostException {
+    public boolean deleteCost(int id, String operator) throws CostException {
         if (id < 1) {
             return false;
         }
+        Log log = new Log();
+        log.setOperator(operator);
         try {
+            log.setOperation("删除业主费用");
             boolean flag = costDao.deleteCost(id);
-            if (flag) {
+            boolean flag2 = logManage.saveLog(log);
+            if (flag && flag2) {
                 return true;
             } else {
                 return false;
             }
         } catch (SQLException e) {
+            throw new CostException(e.getMessage());
+        } catch (LogException e) {
             throw new CostException(e.getMessage());
         }
     }
