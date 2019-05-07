@@ -48,6 +48,9 @@
             <li class="dropdown">
                 <a href="<%=basePath%>profile.jsp" >超级管理员：<%=loginname%></a>
             </li>
+            <li class="dropdown">
+                <a href="<%=basePath%>changepassword.jsp" >修改密码</a>
+            </li>
             <li>
                 <a href="<%=basePath%>logout">注销登陆</a>
             </li>
@@ -121,6 +124,9 @@
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
                 <a href="<%=basePath%>profile.jsp">物业管理员：<%=loginname%></a>
+            </li>
+            <li class="dropdown">
+                <a href="<%=basePath%>changepassword.jsp" >修改密码</a>
             </li>
             <li>
                 <a href="<%=basePath%>logout">注销登陆</a>

@@ -90,4 +90,26 @@ public class UserDaoImpl implements UserDao {
             return true;
         }
     }
+
+    /**
+     * 修改密码
+     *
+     * @param id
+     * @param password
+     * @return
+     * @throws SQLException
+     */
+    @Override
+    public boolean changePassword(int id, String password) throws SQLException {
+        if (id<1 || "".equals(password)) {
+            return false;
+        }
+        String sql = "UPDATE user SET password=? WHERE uid=?";
+        int flag = DBHelp.executeUpdate(sql, password, id);
+        if (flag == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

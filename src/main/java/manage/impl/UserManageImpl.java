@@ -155,4 +155,38 @@ public class UserManageImpl implements UserManage {
             throw new UserException(e.getMessage());
         }
     }
+
+    /**
+     * 修改用户密码
+     *
+     * @param uid
+     * @param password
+     * @param operator
+     * @return
+     * @throws UserException
+     */
+    @Override
+    public boolean changePassword(int uid, String password, String operator) throws UserException {
+        if (uid<1 || "".equals(password)) {
+            return false;
+        }
+        User user = getUser(uid);
+        String loginname = user.getLoginName();
+        Log log = new Log();
+        log.setOperation("用户["+loginname+"]修改了密码");
+        log.setOperator(operator);
+        try {
+            boolean flag = userDao.changePassword(uid, password);
+            boolean flag2 = logManage.saveLog(log);
+            if (flag && flag2) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new UserException(e.getMessage());
+        }catch (LogException e) {
+            throw new UserException(e.getMessage());
+        }
+    }
 }

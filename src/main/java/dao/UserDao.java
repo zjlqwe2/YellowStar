@@ -22,7 +22,6 @@ public interface UserDao
      */
     List<User> listAll() throws SQLException;
 
-
     /**
      * 创建用户
      */
@@ -32,4 +31,13 @@ public interface UserDao
      * 删除用户
      */
     boolean deleteUser(int id) throws SQLException;
+
+    /**
+     * 修改密码
+     * @param id
+     * @param password
+     * @return
+     * @throws SQLException
+     */
+    boolean changePassword(int id,String password) throws SQLException;
 }

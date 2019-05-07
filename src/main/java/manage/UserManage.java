@@ -50,4 +50,14 @@ public interface UserManage {
      * @throws UserException
      */
     boolean deleteUser(int uid, String operator) throws UserException;
+
+    /**
+     * 修改用户密码
+     * @param uid
+     * @param password
+     * @param operator
+     * @return
+     * @throws UserException
+     */
+    boolean changePassword(int uid,String password, String operator) throws UserException;
 }
