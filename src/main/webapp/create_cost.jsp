@@ -21,7 +21,7 @@
             request.setAttribute("detail",e.getMessage());
             request.getRequestDispatcher("/comm/error.jsp").forward(request,response);
         }
-        if (houses.size() == 0) {
+        if (houses == null) {
             request.setAttribute("title","数据为空");
             request.setAttribute("detail","业主数据为空");
             request.getRequestDispatcher("/comm/error.jsp").forward(request,response);

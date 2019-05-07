@@ -74,6 +74,26 @@ public class ExpressDaoImpl implements ExpressDao {
     }
 
     /**
+     * 获取已经领取的快递
+     *
+     * @return
+     * @throws SQLException
+     */
+    @Override
+    public List<Express> listTakedExpress() throws SQLException {
+        String sql = "SELECT * FROM express WHERE is_take = 1";
+        List<Object> list = DBHelp.executeQuery(sql, new ExpressMapperImpl());
+        if (list==null || list.size()==0) {
+            return null;
+        }
+        List<Express> expresses = new ArrayList<Express>();
+        for (Object item:list) {
+            expresses.add((Express) item);
+        }
+        return expresses;
+    }
+
+    /**
      * 领取快递（修改快递状态）
      *
      * @param express

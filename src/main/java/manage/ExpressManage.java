@@ -38,4 +38,11 @@ public interface ExpressManage {
      * @throws ExpressException
      */
     public List<Express> listNotTakeExpress() throws ExpressException;
+
+    /**
+     * 列出已经领取的快递
+     * @return
+     * @throws ExpressException
+     */
+    public List<Express> listTakedExpress() throws ExpressException;
 }

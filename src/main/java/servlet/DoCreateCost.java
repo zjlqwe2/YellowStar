@@ -29,12 +29,23 @@ public class DoCreateCost extends HttpServlet {
             req.getRequestDispatcher("/comm/error.jsp").forward(req, resp);
             return;
         }
-        int cost_type = Integer.parseInt(req.getParameter("cost_type"));
-        int hid = Integer.parseInt(req.getParameter("hid"));
-        int price = Integer.parseInt(req.getParameter("price"));
-        if (cost_type<1 || hid <1 || price<0) {
+        String cost_type_Str,hid_Str,price_Str;
+        cost_type_Str = req.getParameter("cost_type");
+        hid_Str = req.getParameter("hid");
+        price_Str = req.getParameter("price");
+        if ("".equals(cost_type_Str) || "".equals(hid_Str) || "".equals(price_Str)) {
             req.setAttribute("title", "参数不完整");
             req.setAttribute("detail", "cost_type、operation_hid、price都有才行喔");
+            req.getRequestDispatcher("/comm/error.jsp").forward(req, resp);
+            return;
+        }
+
+        int cost_type = Integer.parseInt(cost_type_Str);
+        int hid = Integer.parseInt(hid_Str);
+        int price = Integer.parseInt(price_Str);
+        if (cost_type<1 || hid <1 || price<0) {
+            req.setAttribute("title", "参数不完整");
+            req.setAttribute("detail", "price不能为空");
             req.getRequestDispatcher("/comm/error.jsp").forward(req, resp);
             return;
         }

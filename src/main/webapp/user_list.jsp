@@ -25,7 +25,7 @@
             request.getRequestDispatcher("/comm/error.jsp").forward(request,response);
         }
         String[] typeName = new String[]{"","管理员","物业"};
-        if (users.size() == 0) {
+        if (users == null) {
             request.setAttribute("title","数据为空");
             request.setAttribute("detail","用户数据为空");
             request.getRequestDispatcher("/comm/error.jsp").forward(request,response);

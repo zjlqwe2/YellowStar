@@ -108,6 +108,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">快递管理<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="<%=basePath%>express_list.jsp">快递查询</a></li>
+                    <li><a href="<%=basePath%>not_take_express_list.jsp">已领快递</a></li>
                     <li><a href="<%=basePath%>create_express.jsp">添加快递</a></li>
                 </ul>
             </li>

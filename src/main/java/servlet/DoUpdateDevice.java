@@ -5,6 +5,7 @@ import exception.DeviceException;
 import manage.DeviceManage;
 import manage.impl.DeviceManageImpl;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +17,7 @@ import java.io.IOException;
  * @path: PropertyManagement-servlet-DoUpdateDevice
  * @date: 2019-04-30 23:38
  */
+@WebServlet("/doupdatedevice")
 public class DoUpdateDevice extends HttpServlet {
     private DeviceManage deviceManage = new DeviceManageImpl();
 

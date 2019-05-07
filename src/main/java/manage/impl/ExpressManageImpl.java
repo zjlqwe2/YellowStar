@@ -111,4 +111,20 @@ public class ExpressManageImpl implements ExpressManage {
             throw new ExpressException(e.getMessage());
         }
     }
+
+    /**
+     * 列出已经领取的快递
+     *
+     * @return
+     * @throws ExpressException
+     */
+    @Override
+    public List<Express> listTakedExpress() throws ExpressException {
+        try {
+            List<Express> list = expressDao.listTakedExpress();
+            return list;
+        } catch (SQLException e) {
+            throw new ExpressException(e.getMessage());
+        }
+    }
 }

@@ -27,7 +27,7 @@
 
             <div class="form-group">
                 <label >是否维修</label>
-                <input type="radio" name="is_service" value="1">是
+                <input type="radio" name="is_service" checked value="1">是
                 <br>
                 <input type="radio" name="is_service" value="0">否
             </div>

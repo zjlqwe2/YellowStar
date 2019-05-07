@@ -17,7 +17,7 @@
         ExpressManage expressManage = new ExpressManageImpl();
         List<Express> lists = null;
         try {
-            lists = expressManage.listNotTakeExpress();
+            lists = expressManage.listTakedExpress();
         } catch (ExpressException e) {
             request.setAttribute("title","错误：");
             request.setAttribute("detail",e.getMessage());
@@ -33,7 +33,7 @@
 <jsp:include page="comm/header.jsp" flush="true"  />
 <jsp:include page="comm/nav.jsp" flush="true" />
 
-<h1 class="text-center" >小区快递信息管理</h1>
+<h1 class="text-center" >小区已领取快递信息</h1>
 <div class="table-responsive">
     <table class="table table-hover table-striped">
         <tr>

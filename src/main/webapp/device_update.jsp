@@ -31,8 +31,8 @@
 <div class="panel panel-primary">
     <div class="panel-heading text-center">添加小区设备信息</div>
     <div class="panel-body">
-        <form action="docreatedevice" method="POST">
-            <input type="hidden" value="<%=device.getDevice_type()%>" name="did">
+        <form action="doupdatedevice" method="POST">
+            <input type="hidden" value="<%=device.getDid()%>" name="did">
             <div class="form-group">
                 <label >设备名称</label>
                 <input type="text" class="form-control" name="device_name" value="<%=device.getDevice_name()%>">
@@ -47,7 +47,7 @@
 
             <div class="form-group">
                 <label >是否维修</label>
-                <input type="radio" name="is_service" value="1">是
+                <input type="radio" name="is_service" checked value="1">是
                 <br>
                 <input type="radio" name="is_service" value="0">否
             </div>

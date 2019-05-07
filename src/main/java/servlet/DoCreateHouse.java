@@ -20,13 +20,24 @@ public class DoCreateHouse extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int usertype = (int)req.getSession().getAttribute("usertype");
+        int usertype = 0;
+        int area = 0;
+        usertype = (int)req.getSession().getAttribute("usertype");
+        String area_Str = "";
+        area_Str = req.getParameter("area");
+        if ("".equals(area_Str)) {
+            req.setAttribute("title", "信息不全");
+            req.setAttribute("detail", "部分信息未填写");
+            req.getRequestDispatcher("/comm/error.jsp").forward(req, resp);
+        }
+        area = Integer.parseInt(area_Str);
+
+
         String operator = (String) (req.getSession().getAttribute("loginname"));
         String user_name = req.getParameter("user_name");
         String identity = req.getParameter("identity");
         String phone = req.getParameter("phone");
         String house_type = req.getParameter("house_type");
-        int area = Integer.parseInt(req.getParameter("area"));
         String gmt_buy = req.getParameter("gmt_buy");
         String building = req.getParameter("building");
         String unit = req.getParameter("unit");
@@ -56,8 +67,6 @@ public class DoCreateHouse extends HttpServlet {
         house.setBrand(brand);
         house.setLicenseplatenumber(licenseplatenumber);
 
-        // 测试代码，没有问题删
-        System.out.println(house);
         if (usertype != 2) {
             req.setAttribute("title", "权限不足");
             req.setAttribute("detail", "仅物业管理员可操作");

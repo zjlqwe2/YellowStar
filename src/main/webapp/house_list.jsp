@@ -27,7 +27,7 @@
             request.getRequestDispatcher("/comm/error.jsp").forward(request,response);
         }
         String[] typeName = new String[]{"","管理员","物业"};
-        if (houses.size() == 0) {
+        if (houses == null) {
             request.setAttribute("title","数据为空");
             request.setAttribute("detail","房产数据为空");
             request.getRequestDispatcher("/comm/error.jsp").forward(request,response);

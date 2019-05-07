@@ -2,7 +2,6 @@ package dao;
 
 import entity.Express;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,6 +26,13 @@ public interface ExpressDao
      * @return
      */
     List<Express> listNotTakeExpress() throws SQLException;
+
+    /**
+     * 获取已经领取的快递
+     * @return
+     * @throws SQLException
+     */
+    List<Express> listTakedExpress() throws SQLException;
 
     /**
      * 领取快递（修改快递状态）
