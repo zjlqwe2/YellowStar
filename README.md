@@ -55,4 +55,4 @@ Java B/S项目
 
 ## 功能截图
 
-[截图预览](https://ruanfumin.online/PropertyManagement/screen.html)
+[截图预览](https://ruanfumin.online/YellowStar/screen.html)
