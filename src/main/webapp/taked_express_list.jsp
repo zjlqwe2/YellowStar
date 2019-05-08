@@ -43,7 +43,7 @@
             <th>手机号码</th>
             <th>快递单号</th>
             <th>创建时间</th>
-            <th>操作</th>
+
         </tr>
         <%
             for(int i=0;i<lists.size();i++) {
@@ -56,7 +56,6 @@
             <td><%=e.getPhone()%></td>
             <td><%=e.getExpress_id()%></td>
             <td><%=e.getGmt_create()%></td>
-            <td><a href="<%=basePath%>express_take?did=<%=e.getEid()%>">点击领取</a></td>
         </tr>
         <%
             }
