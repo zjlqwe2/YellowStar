@@ -13,19 +13,7 @@ public class House
     private int area;
     private String gmtBuy;
     private String building;
-    private String unit;
     private String houseNum;
-    private String location;
-    private String brand;
-    private String licenseplatenumber;
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
 
     public int getHid() {
         return hid;
@@ -91,36 +79,12 @@ public class House
         this.building = building;
     }
 
-    public String getUnit() {
-        return unit;
-    }
-
-    public void setUnit(String unit) {
-        this.unit = unit;
-    }
-
     public String getHouseNum() {
         return houseNum;
     }
 
     public void setHouseNum(String houseNum) {
         this.houseNum = houseNum;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getLicenseplatenumber() {
-        return licenseplatenumber;
-    }
-
-    public void setLicenseplatenumber(String licenseplatenumber) {
-        this.licenseplatenumber = licenseplatenumber;
     }
 
     @Override
@@ -134,11 +98,7 @@ public class House
                 ", area=" + area +
                 ", gmtBuy='" + gmtBuy + '\'' +
                 ", building='" + building + '\'' +
-                ", unit='" + unit + '\'' +
                 ", houseNum='" + houseNum + '\'' +
-                ", location='" + location + '\'' +
-                ", brand='" + brand + '\'' +
-                ", licenseplatenumber='" + licenseplatenumber + '\'' +
                 '}';
     }
 }

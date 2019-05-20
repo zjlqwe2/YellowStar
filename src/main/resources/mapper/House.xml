@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.HouseMapper">
+
+    <select id="getHouseById" resultType="entity.House">
+        select * from  house where hid=#{hid}
+    </select>
+
+    <insert id="addHouse" parameterType="entity.House" flushCache="true">
+    	insert into house
+    	(user_name, identity, phone, house_type, area, gmt_buy, building, house_num)
+    	values
+    	(#{userName}, #{identity}, #{phone}, #{houseType},#{area},#{gmtBuy}, #{building}, #{houseNum})
+    </insert>
+
+    <update id="updateHouse"  parameterType="entity.House" flushCache="true">
+    	update house set
+    	user_name=#{userName},
+    	identity=#{identity},
+    	phone=#{phone},
+    	house_type=#{houseType},
+    	area=#{area},
+    	gmt_buy=#{gmtBuy},
+    	building=#{building},
+    	house_num=#{houseNum}
+    	where hid=#{hid}
+    </update>
+
+    <delete id="deleteHouseById" parameterType="int" flushCache="true">
+    	DELETE FROM house where hid=#{hid}
+    </delete>
+
+    <select id="queryHouseByPage" resultType="entity.House" flushCache="true">
+    	select * from house limit #{pageNum},#{pageSize}
+    </select>
+
+    <select id="queryHouseCnt" resultType="int" flushCache="true">
+    	select count(*) from house
+    </select>
+
+</mapper>

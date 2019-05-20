@@ -1,4 +1,5 @@
 package entity;
+
 /**
  * @description: 用户实体
  */
@@ -32,7 +33,6 @@ public class User
     public void setPassWord(String passWord) {
         this.passWord = passWord;
     }
-
 
     public int getUserType() {
         return userType;

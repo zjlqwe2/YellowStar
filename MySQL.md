@@ -11,8 +11,8 @@
 ```sql
 CREATE TABLE IF NOT EXISTS user (
     uid INT UNSIGNED NOT NULL AUTO_INCREMENT KEY COMMENT 'UID',
-    loginname VARCHAR(20) NOT NULL UNIQUE comment '登录名',
-    password CHAR(32) NOT NULL COMMENT '密码',
+    login_name VARCHAR(20) NOT NULL UNIQUE comment '登录名',
+    pass_word CHAR(32) NOT NULL COMMENT '密码',
     user_type TINYINT UNSIGNED NOT NULL COMMENT '用户类型'
 );
 ```
@@ -31,11 +31,7 @@ CREATE TABLE IF NOT EXISTS house (
     area INT UNSIGNED NOT NULL COMMENT '住房面积',
     gmt_buy DATE NOT NULL COMMENT '购房时间',
     building VARCHAR(20) NOT NULL comment '楼号',
-    unit VARCHAR(20) NOT NULL comment '小区单元',
-    house_num VARCHAR(20) NOT NULL COMMENT '门牌号',
-    location VARCHAR(20) comment '位置',
-    brand VARCHAR (20) comment '品牌',
-    licenseplatenumber VARCHAR(8) comment '车牌号'
+    house_num VARCHAR(20) NOT NULL COMMENT '门牌号'
 );
 ```
 

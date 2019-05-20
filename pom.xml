@@ -11,7 +11,7 @@
 
   <name>PropertyManagement Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
-  <url>http://www.ruanfumin.online</url>
+  <url>https://www.ruanfumin.online/YellowStar</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -103,6 +103,12 @@
                     <artifactId>jstl-api</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.4.6</version>
         </dependency>
     </dependencies>
 

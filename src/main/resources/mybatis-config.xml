@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 加载 properties 配置文件 -->
+    <properties resource="connect.properties">
+    </properties>
+
+
+    <settings>
+        <!-- 驼峰法命名规范 -->
+        <setting name="mapUnderscoreToCamelCase" value="true" />
+    </settings>
+
+
+    <!-- 可以指定切换数据库源,比如测试数据库和生产数据库 -->
+    <environments default="development">
+        <environment id="development">
+            <!-- transactionManager 事务管理器 -->
+            <transactionManager type="JDBC"/>
+            <!-- POOLED 使用连接池技术 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="mapper/User.xml" />
+        <mapper resource="mapper/House.xml" />
+    </mappers>
+
+</configuration>
